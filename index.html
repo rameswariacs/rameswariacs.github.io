@@ -132,6 +132,10 @@
   .teaching-note { font-size: 14.5px; color: var(--muted); }
 
   footer { padding: 34px 0 60px; font-size: 13.5px; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+  .back-top { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 13px; text-decoration: none; white-space: nowrap; }
+  .back-top:hover { text-decoration: underline; }
   a { color: var(--accent); }
 
   @media (max-width: 620px) {
@@ -147,12 +151,13 @@
   }
 </style>
 </head>
-<body>
+<body id="top">
 
 <nav><div class="wrap">
+  <a href="#about">About</a>
   <a href="#research">Research</a>
-  <a href="#publications">Publications</a>
   <a href="#code">Code &amp; Data</a>
+  <a href="#publications">Publications</a>
   <a href="#teaching">Teaching</a>
   <a href="#contact">Contact</a>
 </div></nav>
@@ -260,7 +265,7 @@
   <p class="featured-intro">Six representative papers spanning topological &pi;-conjugated materials and non-classical pancake bonding. Each image is drawn from the article's graphical or supporting artwork.</p>
   <div class="featured-grid">
     <article class="featured-paper">
-      <a class="featured-figure" href="https://doi.org/10.1021/jacs.4c10064" target="_blank" rel="noopener"><img src="images/featured/jacs-topological.jpg" alt="Orbital transition in a strained pi-conjugated polymer"></a>
+      <a class="featured-figure" href="https://doi.org/10.1021/jacs.4c10064" target="_blank" rel="noopener"><img src="images/featured/jacs-topological.jpg" alt="Orbital transition in a strained pi-conjugated polymer" loading="lazy" decoding="async"></a>
       <div class="featured-body">
         <div class="featured-journal">J. Am. Chem. Soc. &middot; 2024</div>
         <h3 class="featured-title">Topological Transition in Aromatic and Quinonoid &pi;-Conjugated Polymers Induced by Static Strain</h3>
@@ -269,7 +274,7 @@
       </div>
     </article>
     <article class="featured-paper">
-      <a class="featured-figure" href="https://doi.org/10.1021/jacs.3c14065" target="_blank" rel="noopener"><img src="images/featured/jacs-perylene.jpg" alt="Energy landscape connecting pi-stacked perylene dimer geometries"></a>
+      <a class="featured-figure" href="https://doi.org/10.1021/jacs.3c14065" target="_blank" rel="noopener"><img src="images/featured/jacs-perylene.jpg" alt="Energy landscape connecting pi-stacked perylene dimer geometries" loading="lazy" decoding="async"></a>
       <div class="featured-body">
         <div class="featured-journal">J. Am. Chem. Soc. &middot; 2024</div>
         <h3 class="featured-title">Structure and Bonding in &pi;-Stacked Perylenes: The Impact of Charge on Pancake Bonding</h3>
@@ -278,7 +283,7 @@
       </div>
     </article>
     <article class="featured-paper">
-      <a class="featured-figure" href="https://doi.org/10.1039/D5SC00639B" target="_blank" rel="noopener"><img src="images/featured/quinonoid-radial.jpeg" alt="Energy-level crossings and molecular orbitals in quinonoid nanohoops"></a>
+      <a class="featured-figure" href="https://doi.org/10.1039/D5SC00639B" target="_blank" rel="noopener"><img src="images/featured/quinonoid-radial.jpeg" alt="Energy-level crossings and molecular orbitals in quinonoid nanohoops" loading="lazy" decoding="async"></a>
       <div class="featured-body">
         <div class="featured-journal">Chemical Science &middot; 2025</div>
         <h3 class="featured-title">Quinonoid Radial &pi;-Conjugation</h3>
@@ -287,7 +292,7 @@
       </div>
     </article>
     <article class="featured-paper">
-      <a class="featured-figure" href="https://doi.org/10.1021/acsmaterialsau.4c00153" target="_blank" rel="noopener"><img src="images/featured/acene-dimers.jpg" alt="Molecular stacks illustrating pancake bonding in cationic acene dimers"></a>
+      <a class="featured-figure" href="https://doi.org/10.1021/acsmaterialsau.4c00153" target="_blank" rel="noopener"><img src="images/featured/acene-dimers.jpg" alt="Molecular stacks illustrating pancake bonding in cationic acene dimers" loading="lazy" decoding="async"></a>
       <div class="featured-body">
         <div class="featured-journal">ACS Materials Au &middot; 2025</div>
         <h3 class="featured-title">Pancake Bonding in the Stabilization of Cationic Acene Dimers</h3>
@@ -296,7 +301,7 @@
       </div>
     </article>
     <article class="featured-paper">
-      <a class="featured-figure" href="https://doi.org/10.1039/d4sc03774j" target="_blank" rel="noopener"><img src="images/featured/triphenylene.png" alt="Triphenylene radical-cation trimer with charge and spectroscopic features"></a>
+      <a class="featured-figure" href="https://doi.org/10.1039/d4sc03774j" target="_blank" rel="noopener"><img src="images/featured/triphenylene.png" alt="Triphenylene radical-cation trimer with charge and spectroscopic features" loading="lazy" decoding="async"></a>
       <div class="featured-body">
         <div class="featured-journal">Chemical Science &middot; 2024</div>
         <h3 class="featured-title">A Unique Trimeric Triphenylene Radical Cation: Stacking Aggregation, Bonding, and Stability</h3>
@@ -305,7 +310,7 @@
       </div>
     </article>
     <article class="featured-paper">
-      <a class="featured-figure" href="https://doi.org/10.1021/acs.chemmater.3c02547" target="_blank" rel="noopener"><img src="images/featured/chemmat-topological.jpg" alt="Frontier orbitals switching under strain in an acene pi-conjugated polymer"></a>
+      <a class="featured-figure" href="https://doi.org/10.1021/acs.chemmater.3c02547" target="_blank" rel="noopener"><img src="images/featured/chemmat-topological.jpg" alt="Frontier orbitals switching under strain in an acene pi-conjugated polymer" loading="lazy" decoding="async"></a>
       <div class="featured-body">
         <div class="featured-journal">Chemistry of Materials &middot; 2024</div>
         <h3 class="featured-title">Continuous Topological Transition and Bandgap Tuning in Ethynyl-Linked Acene &pi;-Conjugated Polymers through Mechanical Strain</h3>
@@ -420,7 +425,8 @@
 </div></section>
 
 <footer><div class="wrap">
-  &copy; <span id="yr"></span> Rameswar Bhattacharjee.
+  <span>&copy; <span id="yr"></span> Rameswar Bhattacharjee.</span>
+  <a class="back-top" href="#top">Back to top &uarr;</a>
 </div></footer>
 
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
