@@ -11,17 +11,18 @@ regenerate from the script. Use whichever you prefer; they produce the same resu
 
 ### The fast way — edit directly on GitHub
 
-1. Open your Google Scholar profile and note **Citations**, **h-index**.
+1. Open your Google Scholar profile and note **Citations** and **h-index**. Update the authorship counts when a new paper is published.
 2. Go to `github.com/rameswariacs/rameswariacs.github.io`
 3. Click `index.html`, then the **pencil icon** (Edit this file)
 4. Press **Ctrl+F** / **Cmd+F** and search for `class="metrics"`
-5. You'll see four blocks that look like this:
+5. You'll see five blocks that look like this:
 
    ```html
    <div class="metric"><b>37</b><span>Publications</span></div>
-   <div class="metric"><b>1,180</b><span>Citations</span></div>
+   <div class="metric"><b>1,196</b><span>Citations</span></div>
    <div class="metric"><b>19</b><span>h-index</span></div>
    <div class="metric"><b>17</b><span>First author</span></div>
+   <div class="metric"><b>7</b><span>Corresponding author</span></div>
    ```
 
    Change only the numbers between `<b>` and `</b>`.
@@ -41,9 +42,10 @@ Done. The site rebuilds in about a minute.
 Open `build_site.py`, edit the block near the top:
 
 ```python
-CITATIONS     = "1,180"
+CITATIONS     = "1,196"
 H_INDEX       = "19"
 FIRST_AUTHOR  = "17"
+CORRESPONDING_AUTHOR = "7"
 METRICS_AS_OF = "August 2026"
 ```
 

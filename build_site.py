@@ -10,11 +10,12 @@ GITHUB_USER = "rameswariacs"
 SHOW_GITHUB = False
 
 # ---------------------------------------------------------------
-# EDIT THESE FOUR LINES when you refresh from Google Scholar,
+# EDIT THESE FIVE LINES when you refresh your publication metrics,
 # then re-run:  python3 build_site.py
 CITATIONS     = "1,196"
 H_INDEX       = "19"
 FIRST_AUTHOR  = "17"
+CORRESPONDING_AUTHOR = "7"
 METRICS_AS_OF = "August 2026"
 # ---------------------------------------------------------------
 # ---------------------------------------------------------------
@@ -169,9 +170,9 @@ HTML = f"""<!DOCTYPE html>
   }}
   .links a:hover {{ background: var(--accent-soft); border-color: #c9d4e8; }}
 
-  .metrics {{ display: flex; flex-wrap: wrap; gap: 0; margin: 34px 0 0;
+  .metrics {{ display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; margin: 34px 0 0;
     border: 1px solid var(--line); border-radius: 7px; overflow: hidden; background: #fff; }}
-  .metric {{ flex: 1 1 25%; padding: 15px 10px; text-align: center; border-right: 1px solid var(--line); }}
+  .metric {{ padding: 15px 8px; text-align: center; border-right: 1px solid var(--line); }}
   .metric:last-child {{ border-right: 0; }}
   .metric b {{ display: block; font-size: 24px; color: var(--accent); line-height: 1.2; }}
   .metric span {{ font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px;
@@ -253,7 +254,11 @@ HTML = f"""<!DOCTYPE html>
     h1 {{ font-size: 30px; }}
     .hero-row {{ grid-template-columns: 1fr; gap: 24px; }}
     .profile-photo {{ grid-row: 1; width: 160px; height: 176px; }}
-    .metric {{ flex: 1 1 50%; border-bottom: 1px solid var(--line); }}
+    .metrics {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
+    .metric {{ border-right: 1px solid var(--line); border-bottom: 0; }}
+    .metric:nth-child(2n) {{ border-right: 0; }}
+    .metric:nth-child(n+3) {{ border-top: 1px solid var(--line); }}
+    .metric:last-child {{ grid-column: 1 / -1; border-right: 0; }}
     .featured-grid {{ grid-template-columns: 1fr; }}
     .featured-figure {{ height: 210px; }}
     .stack {{ grid-template-columns: 1fr; gap: 2px 0; }}
@@ -295,6 +300,7 @@ HTML = f"""<!DOCTYPE html>
     <div class="metric"><b>{CITATIONS}</b><span>Citations</span></div>
     <div class="metric"><b>{H_INDEX}</b><span>h-index</span></div>
     <div class="metric"><b>{FIRST_AUTHOR}</b><span>First author</span></div>
+    <div class="metric"><b>{CORRESPONDING_AUTHOR}</b><span>Corresponding author</span></div>
   </div>
   <p class="asof">Citation metrics from <a href="https://scholar.google.com/citations?user=E4XO67YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>, {METRICS_AS_OF}.</p>
 </div></header>
