@@ -60,7 +60,9 @@
   .metric span { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px;
     text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 
-  section { padding: 46px 0; border-bottom: 1px solid var(--line); }
+  .asof { margin: 8px 0 0; font-size: 12.5px; color: var(--muted); text-align: right; font-style: italic; }
+  .asof a { color: var(--muted); }
+  section { padding: 46px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 64px; }
   h2 {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size: 13px; letter-spacing: .13em; text-transform: uppercase;
@@ -93,6 +95,13 @@
   .stack { display: grid; grid-template-columns: 145px 1fr; gap: 8px 18px; font-size: 14.5px; }
   .stack dt { font-weight: 700; color: var(--accent); }
   .stack dd { margin: 0; color: var(--muted); }
+
+  .teaching-intro { font-size: 17px; margin-bottom: 22px; }
+  .course-list { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 28px; }
+  .course { margin: 0; }
+  .course-meta { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 12.5px; color: var(--accent); font-weight: 600; letter-spacing: .02em; }
+  .teaching-note { font-size: 14.5px; color: var(--muted); }
 
   footer { padding: 34px 0 60px; font-size: 13.5px; color: var(--muted); }
   a { color: var(--accent); }
@@ -131,10 +140,11 @@
   </div>
   <div class="metrics">
     <div class="metric"><b>37</b><span>Publications</span></div>
-    <div class="metric"><b>1,180</b><span>Citations</span></div>
+    <div class="metric"><b>1,196</b><span>Citations</span></div>
     <div class="metric"><b>19</b><span>h-index</span></div>
     <div class="metric"><b>17</b><span>First author</span></div>
   </div>
+  <p class="asof">Citation metrics from <a href="https://scholar.google.com/citations?user=E4XO67YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>, August 2026.</p>
 </div></header>
 
 <section id="about"><div class="wrap">
@@ -231,15 +241,15 @@
       <li class="pub"><span class="pubnum">36</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; McCormack, M.;‡ Zhu, Y; Wei, Z; Kertesz, M.*; Petrukhina, M.A.* Chemical Oxidation of Coronene: A Crystallographic and Computational Study of Charge-Regulated π-Stacking. ACS Phys. Chem. Au 2026, 571-579.</div><a class="doi" href="https://doi.org/10.1021/acsphyschemau.6c00020" target="_blank" rel="noopener">10.1021/acsphyschemau.6c00020</a></div></li>
       <li class="pub"><span class="pubnum">35</span><div><div class="pub-text">Yin, G.* <span class="me">Bhattacharjee, R.</span>; Wang, T.; Kertesz, M. Wilson polygons and the topology of zero-dimensional systems. Phys. Rev. B. 2026, 113, 115104.</div><a class="doi" href="https://doi.org/10.1103/7wx3-6syf" target="_blank" rel="noopener">10.1103/7wx3-6syf</a></div></li>
       <li class="pub"><span class="pubnum">34</span><div><div class="pub-text">McCormack, M.; <span class="me">Bhattacharjee, R.</span>; Wei, Z.; Petrukhina, M.A.* Chemical Oxidation of Chrysene: A Structural and Theoretical Description of a Mixed-Valent Trimeric Radical Cation. Cryst. Growth Des. 2025, 25, 9549–9554.</div><a class="doi" href="https://doi.org/10.1021/acs.cgd.5c01176" target="_blank" rel="noopener">10.1021/acs.cgd.5c01176</a></div></li>
-      <li class="pub"><span class="pubnum">33</span><div><div class="pub-text">McCormack, M.;‡ <span class="me">Bhattacharjee, R.</span>;‡ Wei, Z.; Kertesz, M.*; Petrukhina, M.A.* Building a Mixed Polyarene π-Stack through Chemical Oxidation: A Structural and Theoretical Investigation. Precis. Chem. 2025, 3, 631–639.</div><a class="doi" href="https://doi.org/10.1021/prechem.5c00066" target="_blank" rel="noopener">10.1021/prechem.5c00066</a></div></li>
+      <li class="pub"><span class="pubnum">33</span><div><div class="pub-text">McCormack, M.;‡ <span class="me">Bhattacharjee, R.</span>;‡ Wei, Z.; Kertesz, M.*; Petrukhina, M.A.* Building a Mixed Polyarene π-Stack with Charge Disparity through Chemical Oxidation: A Structural and Theoretical Investigation. Precis. Chem. 2025, 3, 631–639.</div><a class="doi" href="https://doi.org/10.1021/prechem.5c00066" target="_blank" rel="noopener">10.1021/prechem.5c00066</a></div></li>
       <li class="pub"><span class="pubnum">32</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; Tovar, J.D; Kertesz, M.* Quinonoid radial π-conjugation. Chem. Sci. 2025, 16, 14595.</div><a class="doi" href="https://doi.org/10.1039/D5SC00639B" target="_blank" rel="noopener">10.1039/D5SC00639B</a></div></li>
       <li class="pub"><span class="pubnum">31</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; Lischka, H.; Kertesz, M.* Pancake Bonding in the Stabilization of Cationic Acene Dimers ACS Mater. Au 2025, 5, 365–376.</div><a class="doi" href="https://doi.org/10.1021/acsmaterialsau.4c00153" target="_blank" rel="noopener">10.1021/acsmaterialsau.4c00153</a></div></li>
       <li class="pub"><span class="pubnum">30</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; Kertesz, M.* Topological transition in aromatic and quinonoid π-conjugated polymers induced by static strain. J. Am. Chem. Soc. 2024, 146, 26497–26504.</div><a class="doi" href="https://doi.org/10.1021/jacs.4c10064" target="_blank" rel="noopener">10.1021/jacs.4c10064</a></div></li>
-      <li class="pub"><span class="pubnum">29</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.</span>;‡ McCormack, M.;‡ Wei, Z.; Petrukhina, M.A.*; Kertesz, M.* A unique trimeric triphenylene radical cation: Stacking aggregation, bonding, and stability. Chem. Sci. 2024, 15, 15221-15231.</div><a class="doi" href="https://doi.org/10.1039/d4sc03774j" target="_blank" rel="noopener">10.1039/d4sc03774j</a></div></li>
+      <li class="pub"><span class="pubnum">29</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.</span>;‡ McCormack, M.;‡ Zhou, Z.; Wei, Z.; Petrukhina, M.A.*; Kertesz, M.* A unique trimeric triphenylene radical cation: Stacking aggregation, bonding, and stability. Chem. Sci. 2024, 15, 15221-15231.</div><a class="doi" href="https://doi.org/10.1039/d4sc03774j" target="_blank" rel="noopener">10.1039/d4sc03774j</a></div></li>
       <li class="pub"><span class="pubnum">28</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; Jervis, H.; McCormack, M.; Petrukhina, M.A.; Kertesz, M.* Structure and Bonding in π-Stacked Perylenes: The Impact of Charge on Pancake Bonding. J. Am. Chem. Soc. 2024, 146, 10465–10477.</div><a class="doi" href="https://doi.org/10.1021/jacs.3c14065" target="_blank" rel="noopener">10.1021/jacs.3c14065</a></div></li>
       <li class="pub"><span class="pubnum">27</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; Kertesz, M.*. Continuous Topological Transition and Bandgap Tuning in Ethynyl-Linked Acene π-Conjugated Polymers through Mechanical Strain. Chem. Mater. 2024, 36, 1395–1404.</div><a class="doi" href="https://doi.org/10.1021/acs.chemmater.3c02547" target="_blank" rel="noopener">10.1021/acs.chemmater.3c02547</a></div></li>
       <li class="pub"><span class="pubnum">26</span><div><div class="pub-text">Ren. L.; Xiao. Y.; <span class="me">Bhattacharjee, R.</span>; Wu. J.; Tang. P.; Caratzoulas, S.; Meng. C.; Guo, Q.*; Tsapatsis, M.* High Yield of L-Sorbose via D-Glucose Isomerization in Ethanol over a Bifunctional Titanium-Boron-Beta Zeolite. Chem. Eur. J. 2024, 30, e202402341</div><a class="doi" href="https://doi.org/10.1002/chem.202402341" target="_blank" rel="noopener">10.1002/chem.202402341</a></div></li>
-      <li class="pub"><span class="pubnum">25</span><div><div class="pub-text">McCormack, M.; <span class="me">Bhattacharjee, R.</span>; Jervis, H.; Wei, Z; Kertesz, M.*; Petrukhina, M.A.* Structural and Computational Insights into Partially Oxidized π-stacked Perylene. Cryst. Growth Des. 2023, 23 7496-7503.</div><a class="doi" href="https://doi.org/10.1021/acs.cgd.3c00912" target="_blank" rel="noopener">10.1021/acs.cgd.3c00912</a></div></li>
+      <li class="pub"><span class="pubnum">25</span><div><div class="pub-text">McCormack, M.; <span class="me">Bhattacharjee, R.</span>; Jervis, H.; Wei, Z; Kertesz, M.*; Petrukhina, M.A.* Stabilizing Cationic Perylene Dimers through Pancake Bonding and Equal Charge Share. Cryst. Growth Des. 2023, 23 7496-7503.</div><a class="doi" href="https://doi.org/10.1021/acs.cgd.3c00912" target="_blank" rel="noopener">10.1021/acs.cgd.3c00912</a></div></li>
       <li class="pub"><span class="pubnum">24</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.</span>; Hare, E; Miró, P.* Structure, Properties, and Reactivity of Polyoxocationic Zirconium and Hafnium Clusters: A Computational Investigation Inorg. Chem. 2023, 62, 5081-5087.</div><a class="doi" href="https://doi.org/10.1021/acs.inorgchem.2c04142" target="_blank" rel="noopener">10.1021/acs.inorgchem.2c04142</a></div></li>
       <li class="pub"><span class="pubnum">23</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.</span>; Miró, P.* Aqueous Speciation of Tetravalent Actinides in the Presence of Chloride and Nitrate Ligands Inorg. Chem. 2022, 37, 14718-14725.</div><a class="doi" href="https://doi.org/10.1021/acs.inorgchem.2c02064" target="_blank" rel="noopener">10.1021/acs.inorgchem.2c02064</a></div></li>
       <li class="pub"><span class="pubnum">22</span><div><div class="pub-text">Deegan, M. M.; <span class="me">Bhattacharjee, R.</span>; Caratzoulas, S.; Bloch, E. D.* Stabilizing Porosity in Organic Cages Through Coordination Chemistry. Inorg. Chem. 2021, 60, 7044– 7050.</div><a class="doi" href="https://doi.org/10.1021/acs.inorgchem.0c03590" target="_blank" rel="noopener">10.1021/acs.inorgchem.0c03590</a></div></li>
@@ -269,14 +279,42 @@
 
 <section id="teaching"><div class="wrap">
   <h2>Teaching &amp; Mentoring</h2>
-  <p>I have taught and assisted in Physical Chemistry I and Computational Chemistry Methods at Georgetown
-  University, and have mentored undergraduate, MS-level, and NSF REU researchers &mdash; including an
-  undergraduate thesis student whose work led to co-authored papers in <em>J. Am. Chem. Soc.</em> and
-  <em>Crystal Growth &amp; Design</em>.</p>
-  <p>I am prepared to teach physical chemistry, quantum chemistry, and computational chemistry at both
-  undergraduate and graduate levels. I would also like to develop a project-based course on machine learning
-  for molecular and materials discovery, pairing electronic structure fundamentals with descriptor design,
-  honest model validation, and reproducible open-science practice.</p>
+  <p class="teaching-intro">At Georgetown University, I currently teach General Chemistry Laboratory
+  (CHEM 1105) as a teaching assistant. I lead a weekly recitation and laboratory session and hold office
+  hours for the same group of 24 students.</p>
+
+  <div class="course-list">
+    <article class="card course">
+      <span class="tag">Current course</span>
+      <h3>CHEM 1105 &middot; General Chemistry Laboratory</h3>
+      <p class="course-meta">Teaching Assistant &middot; Fall 2026</p>
+      <p>One hour of recitation, two hours of laboratory, and one hour of office hours each week. I connect
+      experimental observations with molecular explanations, quantitative reasoning, and safe laboratory practice.</p>
+    </article>
+    <article class="card course">
+      <span class="tag">Previous course support</span>
+      <h3>Physical Chemistry I</h3>
+      <p class="course-meta">Teaching Assistant &middot; Fall 2023 and Fall 2024<br>
+      Faculty Assistant &middot; Fall 2025</p>
+      <p>I supported the course across three cohorts through problem solving and assessment, helping students
+      connect thermodynamic and quantum-mechanical models with equations and chemical meaning.</p>
+    </article>
+    <article class="card course">
+      <span class="tag">Previous course support</span>
+      <h3>Computational Chemistry Methods</h3>
+      <p class="course-meta">Teaching Assistant &middot; Spring 2025</p>
+      <p>I helped students treat computation as a scientific argument: choose and justify a method, benchmark
+      calculations, document the workflow, and communicate the limits of a result.</p>
+    </article>
+  </div>
+
+  <h3>Teaching approach and mentoring</h3>
+  <p class="teaching-note">My teaching begins with a chemical question and a qualitative prediction, then moves
+  among molecular pictures, equations, and data before returning to the chemical meaning of the result. I have
+  mentored four undergraduate researchers. One Georgetown undergraduate became a co-author on two papers, and
+  two NSF REU students each completed a self-contained project during a ten-week summer program.</p>
+  <p class="teaching-note">I am prepared to teach general, physical, quantum, and computational chemistry and to
+  develop a project-based course in electronic structure and data-driven chemistry.</p>
 </div></section>
 
 <section id="contact"><div class="wrap">
