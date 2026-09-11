@@ -41,6 +41,12 @@
   nav a:hover { color: var(--accent); }
 
   header { padding: 62px 0 40px; border-bottom: 1px solid var(--line); }
+  .hero-row { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 38px; align-items: center; }
+  .profile-photo {
+    display: block; width: 190px; height: 210px; object-fit: cover; object-position: center 34%;
+    border-radius: 12px; border: 1px solid var(--line); background: #fff;
+    box-shadow: 0 10px 28px rgba(20, 43, 75, .13);
+  }
   h1 { font-size: 40px; line-height: 1.12; margin: 0 0 10px; letter-spacing: -.015em; color: var(--accent); }
   .tagline { font-size: 18px; color: var(--muted); font-style: italic; margin: 0 0 6px; }
   .role { font-size: 16px; margin: 0 0 22px; }
@@ -85,6 +91,28 @@
     font-size: 11.5px; color: var(--muted); text-decoration: none; }
   .doi:hover { color: var(--accent); text-decoration: underline; }
 
+  .featured-intro { max-width: 760px; color: var(--muted); font-size: 15px; margin-bottom: 20px; }
+  .featured-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-bottom: 38px; }
+  .featured-paper {
+    display: flex; flex-direction: column; overflow: hidden; background: #fff;
+    border: 1px solid var(--line); border-radius: 9px;
+    box-shadow: 0 6px 18px rgba(20, 43, 75, .055);
+  }
+  .featured-figure {
+    display: flex; align-items: center; justify-content: center; height: 230px;
+    padding: 14px; background: #fff; border-bottom: 1px solid var(--line);
+  }
+  .featured-figure img { width: 100%; height: 100%; object-fit: contain; }
+  .featured-body { display: flex; flex-direction: column; flex: 1; padding: 18px 19px 19px; }
+  .featured-journal {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--accent); font-size: 11.5px; font-weight: 700; letter-spacing: .07em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .featured-title { font-size: 16.5px; line-height: 1.38; margin-bottom: 9px; }
+  .featured-summary { color: var(--muted); font-size: 14px; line-height: 1.5; margin-bottom: 12px; }
+  .featured-doi { margin-top: auto; }
+
   .card { background: #fff; border: 1px solid var(--line); border-radius: 7px; padding: 20px 22px; margin-bottom: 16px; }
   .card h3 { font-size: 17px; }
   .card p { font-size: 14.5px; color: var(--muted); margin-bottom: 10px; }
@@ -108,7 +136,11 @@
 
   @media (max-width: 620px) {
     h1 { font-size: 30px; }
+    .hero-row { grid-template-columns: 1fr; gap: 24px; }
+    .profile-photo { grid-row: 1; width: 160px; height: 176px; }
     .metric { flex: 1 1 50%; border-bottom: 1px solid var(--line); }
+    .featured-grid { grid-template-columns: 1fr; }
+    .featured-figure { height: 210px; }
     .stack { grid-template-columns: 1fr; gap: 2px 0; }
     .stack dd { margin-bottom: 10px; }
     nav .wrap { gap: 14px; }
@@ -126,17 +158,21 @@
 </div></nav>
 
 <header><div class="wrap">
-  <!-- Optional: add a photo here, e.g. <img src="photo.jpg" alt="" style="width:120px;border-radius:50%;float:right;margin-left:24px"> -->
-  <h1>Rameswar Bhattacharjee</h1>
-  <p class="tagline">Electronic structure theory &middot; &pi;-conjugated and radical materials &middot; machine learning for chemical discovery</p>
-  <p class="role">Research Assistant Professor, Department of Chemistry, Georgetown University</p>
-  <div class="links">
-    <a href="mailto:rb1820@georgetown.edu">Email</a>
-    <a href="https://scholar.google.com/citations?user=E4XO67YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-    <a href="https://orcid.org/0000-0002-6631-5991" target="_blank" rel="noopener">ORCID</a>
-    <a href="https://www.linkedin.com/in/rameswar-bhattacharjee-057249204/" target="_blank" rel="noopener">LinkedIn</a>
-    <!-- Restore once you have pushed a repository: <a href="https://github.com/rameswariacs" target="_blank" rel="noopener">GitHub</a> -->
-    <a href="CV_Rameswar_Bhattacharjee.pdf">Curriculum Vitae</a>
+  <div class="hero-row">
+    <div>
+      <h1>Rameswar Bhattacharjee</h1>
+      <p class="tagline">Electronic structure theory &middot; &pi;-conjugated and radical materials &middot; machine learning for chemical discovery</p>
+      <p class="role">Research Assistant Professor, Department of Chemistry, Georgetown University</p>
+      <div class="links">
+        <a href="mailto:rb1820@georgetown.edu">Email</a>
+        <a href="https://scholar.google.com/citations?user=E4XO67YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://orcid.org/0000-0002-6631-5991" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://www.linkedin.com/in/rameswar-bhattacharjee-057249204/" target="_blank" rel="noopener">LinkedIn</a>
+        <!-- Restore once you have pushed a repository: <a href="https://github.com/rameswariacs" target="_blank" rel="noopener">GitHub</a> -->
+        <a href="CV_Rameswar_Bhattacharjee.pdf">Curriculum Vitae</a>
+      </div>
+    </div>
+    <img class="profile-photo" src="images/profile.png" alt="Portrait of Rameswar Bhattacharjee">
   </div>
   <div class="metrics">
     <div class="metric"><b>37</b><span>Publications</span></div>
@@ -178,7 +214,7 @@
       <article class="theme">
         <h3>Machine learning for structure–property prediction</h3>
         <p>A chemistry-guided descriptor framework linking molecular packing to electronic structure across 2,582 π-radical dimer geometries. Nineteen interpretable geometric descriptors reproduce DFT-level properties at a fraction of the cost, with validation designed to separate genuine geometric information from family-level correlation.</p>
-        <ul><li>2,582 dimer geometries across five PAH radical systems</li><li>Test-set R² = 0.94–0.98; 0.82–0.92 on held-out geometry clusters</li><li>500-fold Y-randomization and system-mean baseline controls</li><li>Data and code released openly on Zenodo</li><li>Submitted to J. Chem. Inf. Model., 2026</li></ul>
+        <ul><li>2,582 dimer geometries across five PAH radical systems</li><li>Test-set R² = 0.94–0.98; 0.82–0.92 on held-out geometry clusters</li><li>500-fold Y-randomization and system-mean baseline controls</li><li>Data and code released openly on Zenodo</li><li>Under revision at J. Chem. Inf. Model., 2026</li></ul>
       </article>
       <article class="theme">
         <h3>Mapping π–σ bonding landscapes in radical dimers</h3>
@@ -220,12 +256,71 @@
   <p style="font-size:14.5px;color:var(--muted)">37 peer-reviewed publications. Name in <span class="me">bold</span>;
   asterisk (*) indicates corresponding author. See <a href="https://scholar.google.com/citations?user=E4XO67YAAAAJ" target="_blank" rel="noopener">Google Scholar</a> for citation metrics.</p>
 
+  <h3 style="font-size:18px;margin:30px 0 8px">Featured publications</h3>
+  <p class="featured-intro">Six representative papers spanning topological &pi;-conjugated materials and non-classical pancake bonding. Each image is drawn from the article's graphical or supporting artwork.</p>
+  <div class="featured-grid">
+    <article class="featured-paper">
+      <a class="featured-figure" href="https://doi.org/10.1021/jacs.4c10064" target="_blank" rel="noopener"><img src="images/featured/jacs-topological.jpg" alt="Orbital transition in a strained pi-conjugated polymer"></a>
+      <div class="featured-body">
+        <div class="featured-journal">J. Am. Chem. Soc. &middot; 2024</div>
+        <h3 class="featured-title">Topological Transition in Aromatic and Quinonoid &pi;-Conjugated Polymers Induced by Static Strain</h3>
+        <p class="featured-summary">Static strain drives an electronic topological transition in conjugated polymers.</p>
+        <a class="doi featured-doi" href="https://doi.org/10.1021/jacs.4c10064" target="_blank" rel="noopener">10.1021/jacs.4c10064</a>
+      </div>
+    </article>
+    <article class="featured-paper">
+      <a class="featured-figure" href="https://doi.org/10.1021/jacs.3c14065" target="_blank" rel="noopener"><img src="images/featured/jacs-perylene.jpg" alt="Energy landscape connecting pi-stacked perylene dimer geometries"></a>
+      <div class="featured-body">
+        <div class="featured-journal">J. Am. Chem. Soc. &middot; 2024</div>
+        <h3 class="featured-title">Structure and Bonding in &pi;-Stacked Perylenes: The Impact of Charge on Pancake Bonding</h3>
+        <p class="featured-summary">Charge distribution and orbital overlap explain stabilization across &pi;-stacked perylene dimers.</p>
+        <a class="doi featured-doi" href="https://doi.org/10.1021/jacs.3c14065" target="_blank" rel="noopener">10.1021/jacs.3c14065</a>
+      </div>
+    </article>
+    <article class="featured-paper">
+      <a class="featured-figure" href="https://doi.org/10.1039/D5SC00639B" target="_blank" rel="noopener"><img src="images/featured/quinonoid-radial.jpeg" alt="Energy-level crossings and molecular orbitals in quinonoid nanohoops"></a>
+      <div class="featured-body">
+        <div class="featured-journal">Chemical Science &middot; 2025</div>
+        <h3 class="featured-title">Quinonoid Radial &pi;-Conjugation</h3>
+        <p class="featured-summary">Mixed aromatic and quinonoid nanohoops reveal frontier-orbital crossings and topological change.</p>
+        <a class="doi featured-doi" href="https://doi.org/10.1039/D5SC00639B" target="_blank" rel="noopener">10.1039/D5SC00639B</a>
+      </div>
+    </article>
+    <article class="featured-paper">
+      <a class="featured-figure" href="https://doi.org/10.1021/acsmaterialsau.4c00153" target="_blank" rel="noopener"><img src="images/featured/acene-dimers.jpg" alt="Molecular stacks illustrating pancake bonding in cationic acene dimers"></a>
+      <div class="featured-body">
+        <div class="featured-journal">ACS Materials Au &middot; 2025</div>
+        <h3 class="featured-title">Pancake Bonding in the Stabilization of Cationic Acene Dimers</h3>
+        <p class="featured-summary">A comparative study of how charge stabilizes cationic acene dimers through pancake bonding.</p>
+        <a class="doi featured-doi" href="https://doi.org/10.1021/acsmaterialsau.4c00153" target="_blank" rel="noopener">10.1021/acsmaterialsau.4c00153</a>
+      </div>
+    </article>
+    <article class="featured-paper">
+      <a class="featured-figure" href="https://doi.org/10.1039/d4sc03774j" target="_blank" rel="noopener"><img src="images/featured/triphenylene.png" alt="Triphenylene radical-cation trimer with charge and spectroscopic features"></a>
+      <div class="featured-body">
+        <div class="featured-journal">Chemical Science &middot; 2024</div>
+        <h3 class="featured-title">A Unique Trimeric Triphenylene Radical Cation: Stacking Aggregation, Bonding, and Stability</h3>
+        <p class="featured-summary">Crystallography and computation explain a shared-electron radical-cation trimer.</p>
+        <a class="doi featured-doi" href="https://doi.org/10.1039/d4sc03774j" target="_blank" rel="noopener">10.1039/d4sc03774j</a>
+      </div>
+    </article>
+    <article class="featured-paper">
+      <a class="featured-figure" href="https://doi.org/10.1021/acs.chemmater.3c02547" target="_blank" rel="noopener"><img src="images/featured/chemmat-topological.jpg" alt="Frontier orbitals switching under strain in an acene pi-conjugated polymer"></a>
+      <div class="featured-body">
+        <div class="featured-journal">Chemistry of Materials &middot; 2024</div>
+        <h3 class="featured-title">Continuous Topological Transition and Bandgap Tuning in Ethynyl-Linked Acene &pi;-Conjugated Polymers through Mechanical Strain</h3>
+        <p class="featured-summary">Mechanical strain provides continuous control of electronic topology and band gaps.</p>
+        <a class="doi featured-doi" href="https://doi.org/10.1021/acs.chemmater.3c02547" target="_blank" rel="noopener">10.1021/acs.chemmater.3c02547</a>
+      </div>
+    </article>
+  </div>
+
   <h3 style="font-size:16px;margin:26px 0 6px">Under review &amp; in preparation</h3>
   <ol class="pubs">
   <li class="pub"><span class="pubnum">&mdash;</span><div>
     <div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; Lischka, H.; Kertesz, M.* How Molecular Packing
     Controls Electronic Structure in &pi;-Stacked Radical Dimers: A DFT and Descriptor-Based Machine-Learning Study.
-    <em>Submitted to Journal of Chemical Information and Modeling</em>, 2026.</div>
+    <em>Under revision at the Journal of Chemical Information and Modeling</em>, 2026.</div>
     <a class="doi" href="https://doi.org/10.5281/zenodo.21712041" target="_blank" rel="noopener">Data &amp; code: 10.5281/zenodo.21712041</a>
   </div></li>
   <li class="pub"><span class="pubnum">&mdash;</span><div>

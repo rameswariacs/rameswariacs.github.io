@@ -1,0 +1,163 @@
+# How to update your website
+
+Two things go stale: **citation metrics** and **publications**. Both are quick.
+
+There are two ways to do everything below — edit the live file on GitHub, or
+regenerate from the script. Use whichever you prefer; they produce the same result.
+
+---
+
+## A. Updating citation metrics (every ~6 months)
+
+### The fast way — edit directly on GitHub
+
+1. Open your Google Scholar profile and note **Citations**, **h-index**.
+2. Go to `github.com/rameswariacs/rameswariacs.github.io`
+3. Click `index.html`, then the **pencil icon** (Edit this file)
+4. Press **Ctrl+F** / **Cmd+F** and search for `class="metrics"`
+5. You'll see four blocks that look like this:
+
+   ```html
+   <div class="metric"><b>37</b><span>Publications</span></div>
+   <div class="metric"><b>1,180</b><span>Citations</span></div>
+   <div class="metric"><b>19</b><span>h-index</span></div>
+   <div class="metric"><b>17</b><span>First author</span></div>
+   ```
+
+   Change only the numbers between `<b>` and `</b>`.
+
+6. Just below, update the date in this line:
+
+   ```html
+   <p class="asof">Citation metrics from <a href="...">Google Scholar</a>, August 2026.</p>
+   ```
+
+7. Scroll to the bottom, click **Commit changes**
+
+Done. The site rebuilds in about a minute.
+
+### The tidy way — regenerate from the script
+
+Open `build_site.py`, edit the block near the top:
+
+```python
+CITATIONS     = "1,180"
+H_INDEX       = "19"
+FIRST_AUTHOR  = "17"
+METRICS_AS_OF = "August 2026"
+```
+
+Then run `python3 build_site.py` and upload the new `index.html`.
+
+---
+
+## B. Adding a new publication
+
+Publications on the site are generated from `pubs.json`, the same file that
+feeds your CV — so updating it keeps both in sync.
+
+1. Open `pubs.json`
+2. Add your new paper as the **first** entry in the list (newest first), matching
+   the existing format exactly:
+
+   ```
+   "Bhattacharjee, R.*; Coauthor, A.; Kertesz, M.* Title of the paper. Journal Name 2027, 12, 3456-3467. DOI: 10.1021/xxxxx",
+   ```
+
+   Keep the trailing comma. Your own name must read `Bhattacharjee, R.` (with an
+   asterisk if you are corresponding) — the scripts bold it automatically.
+
+3. Run both generators:
+
+   ```bash
+   python3 build_site.py      # rebuilds index.html
+   node build_cv.js           # rebuilds the R1 CV
+   node build_cv_pui.js       # rebuilds the PUI CV
+   ```
+
+4. Update the publication count in the metrics (see section A)
+5. Upload the new `index.html`
+
+If a paper moves from "submitted" to "published", also delete it from the
+**Under review & in preparation** section — search `index.html` for
+`Under review` to find it.
+
+---
+
+## C. Updating teaching courses
+
+Teaching experience appears in the `Teaching & Mentoring` section of
+`build_site.py`. Search for `<section id="teaching">` and update the course
+cards there.
+
+For each course, keep the following information current:
+
+- official course number and title, when known
+- role, such as Teaching Assistant or Faculty Assistant
+- semester and year
+- a brief description of the work you performed
+
+The current entry for General Chemistry Laboratory is **CHEM 1105, Fall 2026**.
+When the semester or assignment changes, update the `Current course` card and
+then run `python3 build_site.py` before uploading the regenerated page.
+
+## D. Changing your profile photo
+
+The homepage photo is stored as `images/profile.png`. To replace it later:
+
+1. Rename the new photograph to `profile.png`.
+2. Replace the existing file inside the `images` folder on GitHub.
+3. Keep the filename unchanged; no HTML editing is required.
+
+A square or nearly square photograph works best. The page crops it automatically
+on desktop and mobile screens.
+
+## E. Updating featured publications and images
+
+The six visual cards at the top of the Publications section are maintained in
+`build_site.py`. Search for `featured-grid` to find them.
+
+For each featured paper, update these four items together:
+
+- the DOI link
+- journal and year
+- paper title and one-sentence description
+- image path and descriptive `alt` text
+
+Place the image file in `images/featured/` and use a short, web-safe filename.
+Whenever possible, use the paper's official TOC graphic or an original figure
+that you are permitted to display. Then run `python3 build_site.py` and upload
+both the regenerated `index.html` and the new image file or folder.
+
+The machine-learning paper is currently listed as **under revision**, not as a
+published or featured article. When its status changes, update both the research
+theme bullet and the `Under review & in preparation` entry in `build_site.py`.
+
+## F. Restoring the GitHub link
+
+Once you have pushed at least one real repository:
+
+- **In the script:** set `SHOW_GITHUB = True` near the top of `build_site.py`, re-run
+- **Or in `index.html` directly:** find the line beginning
+  `<!-- Restore once you have pushed a repository:` and remove the `<!--` and `-->`
+
+---
+
+## G. Things not to delete
+
+- The line containing `google-site-verification` — removing it un-verifies you in
+  Google Search Console
+- `sitemap.xml` and `robots.txt`
+- The `<link rel="canonical">` tag
+
+---
+
+## A sensible rhythm
+
+- **When a paper is accepted** — add it to `pubs.json`, regenerate, upload. Five minutes.
+- **Every six months** — refresh citations and the h-index, update the date.
+- **Once a year** — reread the research themes and check they still describe what
+  you actually work on.
+
+A site that is a year out of date is worse than no site. Put a recurring
+reminder in your calendar; it is the only thing that reliably prevents drift.
