@@ -302,36 +302,187 @@ HTML = f"""<!DOCTYPE html>
     .stack dd {{ margin-bottom: 10px; }}
     nav .wrap {{ gap: 14px; }}
   }}
+
+  /* Immersive scientific hero, inspired by the reference site's composition. */
+  :root {{
+    --ink: #172235; --muted: #536075; --accent: #35264f;
+    --accent-soft: #ede9f4; --line: #dbe2eb; --bg: #f7f9fc;
+  }}
+  body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; }}
+  .wrap {{ max-width: 1100px; padding: 0 30px; }}
+  .site-nav {{
+    position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+    background: rgba(8, 15, 28, .72); border-bottom: 1px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(16px);
+  }}
+  .nav-inner {{ max-width: 1320px; margin: auto; padding: 18px 30px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }}
+  .brand {{ color: #fff; font: 700 25px/1 Georgia, serif; letter-spacing: -.02em; text-decoration: none; white-space: nowrap; }}
+  .brand span:last-child {{ display: inline-block; margin-left: 8px; font: 500 14px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .02em; }}
+  .brand-dot {{ color: #ad9ace; }}
+  .nav-links {{ display: flex; align-items: center; gap: 24px; }}
+  .nav-links a {{ color: rgba(255,255,255,.88); font-size: 14px; font-weight: 600; letter-spacing: 0; text-transform: none; }}
+  .nav-links a:hover, .nav-links a:focus-visible {{ color: #fff; text-decoration: underline; text-underline-offset: 5px; }}
+  .menu-toggle {{ display: none; background: none; border: 0; padding: 8px; cursor: pointer; }}
+  .menu-toggle span {{ display: block; width: 25px; height: 2px; margin: 5px 0; border-radius: 2px; background: white; }}
+  .hero {{
+    min-height: 100svh; padding: 120px 24px 48px; border: 0;
+    background: linear-gradient(180deg, rgba(4,9,21,.5), rgba(4,9,21,.34) 48%, rgba(4,9,21,.76)),
+                url("images/hero-molecular-orbitals.jpg") center center / cover no-repeat;
+    color: #fff;
+  }}
+  .hero-inner {{ min-height: calc(100svh - 168px); max-width: 1100px; margin: auto; display: flex; flex-direction: column; justify-content: center; align-items: center; }}
+  .hero-panel {{
+    width: min(100%, 770px); padding: 45px 55px 48px; text-align: center;
+    background: rgba(17, 25, 42, .66); border: 1px solid rgba(255,255,255,.27);
+    border-radius: 19px; box-shadow: 0 22px 60px rgba(0,0,0,.3); backdrop-filter: blur(18px);
+  }}
+  .hero-kicker {{ color: #d9d0e8; font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }}
+  .hero h1 {{ color: #fff; font: 500 clamp(3.15rem, 5.8vw, 5.5rem)/1.03 Georgia, "Iowan Old Style", serif; letter-spacing: -.035em; margin-bottom: 24px; }}
+  .hero-rule {{ display: block; width: 70px; height: 2px; margin: 0 auto 25px; background: rgba(255,255,255,.75); }}
+  .hero .tagline {{ max-width: 620px; margin: auto; color: #f0edf6; font: 400 clamp(1.05rem, 1.8vw, 1.35rem)/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }}
+  .hero .role {{ color: #dad5e4; font-size: 15px; margin: 20px 0 27px; }}
+  .hero-actions {{ display: flex; justify-content: center; flex-wrap: wrap; gap: 13px; }}
+  .hero-button {{ display: inline-flex; justify-content: center; min-width: 190px; padding: 11px 22px; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none; border: 1px solid rgba(255,255,255,.35); }}
+  .hero-button-primary {{ color: #fff; background: #46345f; }}
+  .hero-button-primary:hover {{ background: #5c457b; }}
+  .hero-button-light {{ color: #263043; background: #fff; }}
+  .hero-button-light:hover {{ background: #eae7f1; }}
+  .scroll-cue {{ color: rgba(255,255,255,.86); text-decoration: none; text-align: center; font-size: 13px; margin-top: auto; padding-top: 34px; }}
+  .scroll-cue span {{ display: block; font-size: 20px; line-height: 1.2; }}
+  .page-banner {{
+    min-height: 340px; display: flex; align-items: end; padding: 115px 0 52px; border: 0;
+    color: #fff; background: linear-gradient(90deg, rgba(7,13,27,.9), rgba(17,25,46,.48)),
+      url("images/hero-molecular-orbitals.jpg") center 47% / cover no-repeat;
+  }}
+  .page-banner .wrap {{ width: 100%; }}
+  .page-kicker {{ color: #d9d0e8; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; margin: 0 0 11px; }}
+  .page-banner h1 {{ color: #fff; font: 500 clamp(2.8rem, 5vw, 4.5rem)/1.1 Georgia, serif; margin: 0 0 12px; }}
+  .page-banner p:last-child {{ color: #ece9f3; font-size: 18px; max-width: 720px; margin: 0; }}
+  .nav-links a[aria-current="page"] {{ color: #fff; text-decoration: underline; text-underline-offset: 6px; }}
+  .profile-strip {{ background: #fff; border-bottom: 1px solid var(--line); }}
+  .profile-grid {{ display: grid; grid-template-columns: 132px minmax(0,1fr); gap: 30px; align-items: center; padding-top: 36px; padding-bottom: 36px; }}
+  .profile-strip .profile-photo {{ width: 132px; height: 140px; border-radius: 12px; box-shadow: none; }}
+  .profile-intro p {{ margin-bottom: 15px; max-width: 740px; }}
+  .profile-eyebrow {{ color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }}
+  .profile-intro .links a {{ font-size: 14px; border-radius: 999px; padding: 5px 12px; }}
+  .metrics-band {{ background: #fff; padding: 0 0 30px; border-bottom: 1px solid var(--line); }}
+  .metrics {{ margin-top: 0; border-radius: 12px; box-shadow: 0 12px 28px rgba(21, 33, 57, .06); }}
+  .metric {{ padding: 18px 8px; }}
+  .metric b {{ color: var(--accent); font: 600 27px/1.15 Georgia, serif; }}
+  .metric span {{ font-size: 12px; }}
+  section {{ padding: 70px 0; scroll-margin-top: 80px; }}
+  section:nth-of-type(odd) {{ background: #fff; }}
+  h2 {{ font: 600 clamp(1.8rem, 3vw, 2.4rem)/1.2 Georgia, serif; color: var(--ink); text-transform: none; letter-spacing: -.02em; margin-bottom: 28px; }}
+  h3 {{ font-family: Georgia, "Iowan Old Style", serif; }}
+  .lede {{ font: 400 21px/1.55 Georgia, serif; max-width: 900px; }}
+  #about p {{ max-width: 880px; }}
+  #research .wrap {{ display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }}
+  #research h2 {{ grid-column: 1 / -1; }}
+  .theme {{ margin: 0; padding: 24px; border: 1px solid var(--line); border-left: 3px solid #735c9b; border-radius: 9px; background: #fff; box-shadow: 0 6px 20px rgba(20,34,55,.04); }}
+  .theme h3 {{ font-size: 22px; }}
+  .theme ul {{ font-size: 14px; }}
+  #code .wrap {{ display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }}
+  #code h2 {{ grid-column: 1 / -1; }}
+  .card, .featured-paper {{ border-radius: 11px; box-shadow: 0 6px 18px rgba(20,34,55,.04); }}
+  #code .card {{ margin: 0; }}
+  .featured-grid {{ grid-template-columns: repeat(3, minmax(0,1fr)); }}
+  .featured-figure {{ height: 190px; }}
+  .latest-paper {{ grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); margin-top: 0; }}
+  .latest-figure {{ min-height: 500px; padding: 20px; border-bottom: 0; border-right: 1px solid var(--line); background: #e9edf3; }}
+  .latest-figure img {{ width: auto; max-width: 100%; height: 460px; object-fit: contain; background: #fff; box-shadow: 0 12px 28px rgba(20,32,55,.17); }}
+  .latest-body {{ justify-content: center; }}
+  .latest-kicker, .featured-journal {{ font-size: 13px; }}
+  .latest-title {{ font-size: 24px; }}
+  .latest-badge {{ font-size: 12px; }}
+  .latest-actions a {{ font-size: 14px; border-radius: 999px; padding: 8px 14px; }}
+  .course-list {{ grid-template-columns: repeat(3, minmax(0,1fr)); }}
+  .course-list .card {{ padding: 23px; }}
+  .course-meta {{ font-size: 14px; }}
+  .teaching-intro {{ max-width: 900px; }}
+  a:focus-visible, button:focus-visible {{ outline: 3px solid #b69ad8; outline-offset: 3px; }}
+  @media (max-width: 900px) {{
+    .brand span:last-child {{ display: none; }}
+    .nav-links {{ gap: 13px; }}
+    .featured-grid, .course-list {{ grid-template-columns: repeat(2, minmax(0,1fr)); }}
+    .latest-paper {{ grid-template-columns: 1fr; }}
+    .latest-figure {{ border-right: 0; border-bottom: 1px solid var(--line); }}
+  }}
+  @media (max-width: 680px) {{
+    .wrap {{ padding: 0 20px; }}
+    .nav-inner {{ padding: 14px 20px; }}
+    .menu-toggle {{ display: block; }}
+    .nav-links {{ display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 14px 20px 20px; flex-direction: column; align-items: stretch; gap: 0; background: rgba(10,17,31,.98); border-bottom: 1px solid rgba(255,255,255,.2); }}
+    .nav-links.is-open {{ display: flex; }}
+    .nav-links a {{ padding: 10px 0; }}
+    .hero {{ min-height: 100svh; padding: 80px 16px 22px; background-position: 49% center; }}
+    .hero-inner {{ min-height: calc(100svh - 102px); }}
+    .hero-panel {{ padding: 29px 23px 32px; border-radius: 15px; }}
+    .hero-kicker {{ font-size: 12px; letter-spacing: .08em; }}
+    .hero h1 {{ font-size: clamp(2.75rem, 10vw, 4.3rem); }}
+    .hero .tagline {{ font-size: 17px; }}
+    .hero-actions {{ flex-direction: column; }}
+    .hero-button {{ width: 100%; }}
+    .profile-grid {{ grid-template-columns: 82px minmax(0,1fr); gap: 18px; align-items: start; }}
+    .profile-strip .profile-photo {{ width: 82px; height: 92px; }}
+    .profile-intro .links {{ grid-column: 1 / -1; }}
+    .metrics {{ grid-template-columns: repeat(2,minmax(0,1fr)); }}
+    #research .wrap, #code .wrap {{ grid-template-columns: 1fr; }}
+    .featured-grid, .course-list {{ grid-template-columns: 1fr; }}
+    .latest-body {{ padding: 23px; }}
+    .latest-title {{ font-size: 22px; }}
+    section {{ padding: 53px 0; }}
+    .page-banner {{ min-height: 280px; padding: 100px 0 42px; }}
+  }}
+  @media (prefers-reduced-motion: reduce) {{ html {{ scroll-behavior: auto; }} }}
 </style>
 </head>
 <body id="top">
 
-<nav><div class="wrap">
-  <a href="#about">About</a>
-  <a href="#research">Research</a>
-  <a href="#code">Code &amp; Data</a>
-  <a href="#publications">Publications</a>
-  <a href="#teaching">Teaching</a>
-  <a href="#contact">Contact</a>
+<nav class="site-nav" aria-label="Main navigation"><div class="nav-inner">
+  <a class="brand" href="index.html">RB<span class="brand-dot">.</span> <span>Computational Chemistry</span></a>
+  <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="site-links" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="site-links">
+    <a href="#about">About</a>
+    <a href="research.html">Research</a>
+    <a href="research.html#code">Code &amp; Data</a>
+    <a href="publications.html">Publications</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#contact">Contact</a>
+  </div>
 </div></nav>
 
-<header><div class="wrap">
-  <div class="hero-row">
-    <div>
-      <h1>Rameswar Bhattacharjee</h1>
-      <p class="tagline">Electronic structure theory &middot; &pi;-conjugated and radical materials &middot; machine learning for chemical discovery</p>
-      <p class="role">Research Assistant Professor, Department of Chemistry, Georgetown University</p>
-      <div class="links">
-        <a href="mailto:rb1820@georgetown.edu">Email</a>
-        <a href="https://scholar.google.com/citations?user=E4XO67YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-        <a href="https://orcid.org/0000-0002-6631-5991" target="_blank" rel="noopener">ORCID</a>
-        <a href="https://www.linkedin.com/in/rameswar-bhattacharjee-057249204/" target="_blank" rel="noopener">LinkedIn</a>
-        {github_link}
-        <a href="CV_Rameswar_Bhattacharjee.pdf">Curriculum Vitae</a>
-      </div>
+<header class="hero"><div class="hero-inner">
+  <div class="hero-panel">
+    <p class="hero-kicker">Georgetown University · Department of Chemistry</p>
+    <h1>Rameswar<br>Bhattacharjee</h1>
+    <span class="hero-rule" aria-hidden="true"></span>
+    <p class="tagline">Electronic structure theory · π-conjugated and radical materials · machine learning for chemical discovery</p>
+    <p class="role">Research Assistant Professor</p>
+    <div class="hero-actions">
+      <a class="hero-button hero-button-primary" href="publications.html#latest-work">Explore latest work</a>
+      <a class="hero-button hero-button-light" href="research.html">Explore research</a>
     </div>
-    <img class="profile-photo" src="images/profile.png" alt="Portrait of Rameswar Bhattacharjee">
   </div>
+  <a class="scroll-cue" href="#latest-work">Scroll to explore <span aria-hidden="true">↓</span></a>
+</div></header>
+
+<div class="profile-strip"><div class="wrap profile-grid">
+  <img class="profile-photo" src="images/profile.png" alt="Portrait of Rameswar Bhattacharjee">
+  <div class="profile-intro">
+    <p class="profile-eyebrow">Computational chemist · Georgetown University</p>
+    <p>I study how molecular structure, electronic topology, and π-stacking shape the properties of radical and conjugated materials.</p>
+    <div class="links">
+      <a href="mailto:rb1820@georgetown.edu">Email</a>
+      <a href="https://scholar.google.com/citations?user=E4XO67YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="https://orcid.org/0000-0002-6631-5991" target="_blank" rel="noopener">ORCID</a>
+      <a href="https://www.linkedin.com/in/rameswar-bhattacharjee-057249204/" target="_blank" rel="noopener">LinkedIn</a>
+      {github_link}
+      <a href="CV_Rameswar_Bhattacharjee.pdf">Curriculum Vitae</a>
+    </div>
+  </div>
+</div></div>
+
+<div class="metrics-band"><div class="wrap">
   <div class="metrics">
     <div class="metric"><b>{len(pubs)}</b><span>Publications</span></div>
     <div class="metric"><b>{CITATIONS}</b><span>Citations</span></div>
@@ -340,7 +491,27 @@ HTML = f"""<!DOCTYPE html>
     <div class="metric"><b>{CORRESPONDING_AUTHOR}</b><span>Corresponding author</span></div>
   </div>
   <p class="asof">Citation metrics from <a href="https://scholar.google.com/citations?user=E4XO67YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>, {METRICS_AS_OF}.</p>
-</div></header>
+</div></div>
+
+<section id="latest-work"><div class="wrap">
+  <h2>Latest work</h2>
+  <article class="latest-paper" id="latest-publication">
+    <a class="latest-figure" href="https://doi.org/10.26434/chemrxiv.15006941/v1" target="_blank" rel="noopener">
+      <img src="images/latest/chemrxiv-preprint-first-page.jpg" alt="First page of the ChemRxiv preprint, showing the title, authors, abstract, and preprint notice" decoding="async">
+    </a>
+    <div class="latest-body">
+      <div class="latest-kicker">ChemRxiv preprint &middot; 2026 &middot; Under revision at JCIM</div>
+      <h3 class="latest-title">How Molecular Packing Controls Electronic Structure in &pi;-Stacked Radical Dimers: A DFT and Descriptor-Based Machine-Learning Study</h3>
+      <p class="latest-authors"><span class="me">Rameswar Bhattacharjee*</span>; Hans Lischka; Miklos Kertesz*</p>
+      <span class="latest-badge">First &amp; corresponding author</span>
+      <p class="latest-summary">Interpretable Extra Trees and neural-network models connect molecular packing to four electronic properties across 2,582 configurations of five radical-dimer families, achieving test-set R&sup2; values of 0.94&ndash;0.98 with rigorous geometry-clustered and Y-randomization validation.</p>
+      <div class="latest-actions">
+        <a href="https://doi.org/10.26434/chemrxiv.15006941/v1" target="_blank" rel="noopener">Read the preprint</a>
+        <a href="https://doi.org/10.5281/zenodo.21712041" target="_blank" rel="noopener">Data &amp; code</a>
+      </div>
+    </div>
+  </article>
+</div></section>
 
 <section id="about"><div class="wrap">
   <h2>About</h2>
@@ -391,23 +562,7 @@ HTML = f"""<!DOCTYPE html>
   <p style="font-size:14.5px;color:var(--muted)">{len(pubs)} peer-reviewed publications. Name in <span class="me">bold</span>;
   asterisk (*) indicates corresponding author. See <a href="https://scholar.google.com/citations?user=E4XO67YAAAAJ" target="_blank" rel="noopener">Google Scholar</a> for citation metrics.</p>
 
-  <h3 style="font-size:18px;margin:30px 0 8px">Latest work</h3>
-  <article class="latest-paper" id="latest-publication">
-    <a class="latest-figure" href="https://doi.org/10.26434/chemrxiv.15006941/v1" target="_blank" rel="noopener">
-      <img src="images/latest/ml-radical-dimers-toc.png" alt="Machine-learning workflow mapping pi-stacked radical-dimer coordinates and structural descriptors to predicted electronic properties" decoding="async">
-    </a>
-    <div class="latest-body">
-      <div class="latest-kicker">ChemRxiv preprint &middot; 2026 &middot; Under revision at JCIM</div>
-      <h3 class="latest-title">How Molecular Packing Controls Electronic Structure in &pi;-Stacked Radical Dimers: A DFT and Descriptor-Based Machine-Learning Study</h3>
-      <p class="latest-authors"><span class="me">Rameswar Bhattacharjee*</span>; Hans Lischka; Miklos Kertesz*</p>
-      <span class="latest-badge">First &amp; corresponding author</span>
-      <p class="latest-summary">Interpretable Extra Trees and neural-network models connect molecular packing to four electronic properties across 2,582 configurations of five radical-dimer families, achieving test-set R&sup2; values of 0.94&ndash;0.98 with rigorous geometry-clustered and Y-randomization validation.</p>
-      <div class="latest-actions">
-        <a href="https://doi.org/10.26434/chemrxiv.15006941/v1" target="_blank" rel="noopener">Read the preprint</a>
-        <a href="https://doi.org/10.5281/zenodo.21712041" target="_blank" rel="noopener">Data &amp; code</a>
-      </div>
-    </div>
-  </article>
+
 
   <h3 style="font-size:18px;margin:30px 0 8px">Featured publications</h3>
   <p class="featured-intro">Six representative papers spanning topological &pi;-conjugated materials and non-classical pancake bonding. Each image is drawn from the article's graphical or supporting artwork.</p>
@@ -542,12 +697,103 @@ HTML = f"""<!DOCTYPE html>
   <a class="back-top" href="#top">Back to top &uarr;</a>
 </div></footer>
 
-<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const menuButton = document.querySelector('.menu-toggle');
+  const siteLinks = document.querySelector('.nav-links');
+  menuButton.addEventListener('click', () => {{
+    const open = siteLinks.classList.toggle('is-open');
+    menuButton.setAttribute('aria-expanded', String(open));
+  }});
+  siteLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {{
+    siteLinks.classList.remove('is-open');
+    menuButton.setAttribute('aria-expanded', 'false');
+  }}));
+</script>
 </body>
 </html>
 """
 
+def section_markup(source, section_id):
+    start = source.index(f'<section id="{section_id}">')
+    end = source.index('</section>', start) + len('</section>')
+    return source[start:end]
+
+def page_metadata(source, page, title, description):
+    result = source.replace(
+        '<title>Rameswar Bhattacharjee — Computational Chemistry</title>',
+        f'<title>{title} — Rameswar Bhattacharjee</title>', 1
+    )
+    result = re.sub(
+        r'<meta name="description" content="[^"]+">',
+        f'<meta name="description" content="{html.escape(description, quote=True)}">',
+        result, count=1
+    )
+    result = result.replace(
+        'href="https://rameswariacs.github.io/"',
+        f'href="https://rameswariacs.github.io/{page}"', 1
+    )
+    result = result.replace(
+        'content="https://rameswariacs.github.io/"',
+        f'content="https://rameswariacs.github.io/{page}"', 1
+    )
+    result = result.replace(
+        '<meta property="og:title" content="Rameswar Bhattacharjee — Computational Chemistry">',
+        f'<meta property="og:title" content="{title} — Rameswar Bhattacharjee">', 1
+    )
+    result = re.sub(
+        r'<meta property="og:description" content="[^"]+">',
+        f'<meta property="og:description" content="{html.escape(description, quote=True)}">',
+        result, count=1
+    )
+    return result
+
+head = HTML[:HTML.index('<body id="top">')]
+nav_start = HTML.index('<nav class="site-nav"')
+nav_end = HTML.index('</nav>', nav_start) + len('</nav>')
+nav_markup = HTML[nav_start:nav_end]
+footer_markup = HTML[HTML.index('<footer>'):]
+
+def interior_nav(current):
+    links = nav_markup.replace('href="#about"', 'href="index.html#about"')
+    links = links.replace('href="#teaching"', 'href="index.html#teaching"')
+    links = links.replace('href="#contact"', 'href="index.html#contact"')
+    active = 'research.html' if current == 'research' else 'publications.html'
+    return links.replace(f'<a href="{active}">', f'<a href="{active}" aria-current="page">', 1)
+
+def interior_page(filename, title, subtitle, content):
+    page_head = page_metadata(head, filename, title, subtitle)
+    banner = (
+        '<header class="page-banner"><div class="wrap">'
+        '<p class="page-kicker">Rameswar Bhattacharjee · Computational Chemistry</p>'
+        f'<h1>{html.escape(title)}</h1><p>{html.escape(subtitle)}</p>'
+        '</div></header>'
+    )
+    current = filename.removesuffix('.html')
+    return page_head + '<body id="top">\n' + interior_nav(current) + '\n' + banner + '\n' + content + '\n' + footer_markup
+
+research_page = interior_page(
+    'research.html', 'Research',
+    'Electronic structure, radical π-stacking, conjugated materials, and machine learning.',
+    section_markup(HTML, 'research') + '\n' + section_markup(HTML, 'code')
+)
+publications_page = interior_page(
+    'publications.html', 'Publications',
+    f'Latest work, selected articles, and the complete list of {len(pubs)} peer-reviewed publications.',
+    section_markup(HTML, 'latest-work') + '\n' + section_markup(HTML, 'publications')
+)
+
+home = HTML
+for section_id in ('research', 'code', 'publications'):
+    home = home.replace(section_markup(HTML, section_id), '', 1)
+
 out = pathlib.Path('site')
 out.mkdir(exist_ok=True)
-(out / 'index.html').write_text(HTML, encoding='utf-8')
-print(f'wrote site/index.html — {len(pubs)} publications, {len(HTML)} bytes')
+for name, content in (
+    ('index.html', home),
+    ('research.html', research_page),
+    ('publications.html', publications_page),
+):
+    (out / name).write_text(content, encoding='utf-8')
+    pathlib.Path(name).write_text(content, encoding='utf-8')
+print(f'wrote three pages — {len(pubs)} publications')

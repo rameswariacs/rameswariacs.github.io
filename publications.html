@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publications — Rameswar Bhattacharjee</title>
+<meta name="description" content="Latest work, selected articles, and the complete list of 37 peer-reviewed publications.">
+<link rel="canonical" href="https://rameswariacs.github.io/publications.html">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Rameswar Bhattacharjee">
+<meta name="keywords" content="Rameswar Bhattacharjee, computational chemistry, electronic structure theory, pancake bonding, nanohoops, machine learning chemistry, Georgetown University">
+<meta property="og:title" content="Publications — Rameswar Bhattacharjee">
+<meta property="og:description" content="Latest work, selected articles, and the complete list of 37 peer-reviewed publications.">
+<meta property="og:url" content="https://rameswariacs.github.io/publications.html">
+<meta property="og:type" content="profile">
+<meta name="google-site-verification" content="hAc3K22zb3C66vtNvdvHTpIAnJmgmK3iT44Jfl8gBTw" />
+<style>
+  :root {
+    --ink: #1a1a1a; --muted: #5a6270; --accent: #1F3864; --accent-soft: #eaeff8;
+    --line: #e2e6ee; --bg: #fdfdfc;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.65 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 0 28px; }
+
+  nav {
+    position: sticky; top: 0; z-index: 20; background: rgba(253,253,252,.94);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+  }
+  nav .wrap { display: flex; gap: 22px; padding-top: 13px; padding-bottom: 13px; flex-wrap: wrap; }
+  nav a {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 13px; letter-spacing: .04em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+  }
+  nav a:hover { color: var(--accent); }
+
+  header { padding: 62px 0 40px; border-bottom: 1px solid var(--line); }
+  .hero-row { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 38px; align-items: center; }
+  .profile-photo {
+    display: block; width: 190px; height: 210px; object-fit: cover; object-position: center 34%;
+    border-radius: 12px; border: 1px solid var(--line); background: #fff;
+    box-shadow: 0 10px 28px rgba(20, 43, 75, .13);
+  }
+  h1 { font-size: 40px; line-height: 1.12; margin: 0 0 10px; letter-spacing: -.015em; color: var(--accent); }
+  .tagline { font-size: 18px; color: var(--muted); font-style: italic; margin: 0 0 6px; }
+  .role { font-size: 16px; margin: 0 0 22px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .links a {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: 13px;
+    text-decoration: none; color: var(--accent); border: 1px solid var(--line);
+    background: #fff; padding: 6px 13px; border-radius: 5px; transition: .15s;
+  }
+  .links a:hover { background: var(--accent-soft); border-color: #c9d4e8; }
+
+  .metrics { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; margin: 34px 0 0;
+    border: 1px solid var(--line); border-radius: 7px; overflow: hidden; background: #fff; }
+  .metric { padding: 15px 8px; text-align: center; border-right: 1px solid var(--line); }
+  .metric:last-child { border-right: 0; }
+  .metric b { display: block; font-size: 24px; color: var(--accent); line-height: 1.2; }
+  .metric span { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px;
+    text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+
+  .asof { margin: 8px 0 0; font-size: 12.5px; color: var(--muted); text-align: right; font-style: italic; }
+  .asof a { color: var(--muted); }
+  section { padding: 46px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 64px; }
+  h2 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 13px; letter-spacing: .13em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 26px; font-weight: 600;
+  }
+  h3 { font-size: 20px; margin: 0 0 8px; color: var(--ink); line-height: 1.3; }
+  p { margin: 0 0 14px; }
+  .lede { font-size: 17.5px; }
+
+  .theme { margin-bottom: 34px; padding-left: 18px; border-left: 3px solid var(--accent-soft); }
+  .theme ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 14.5px; }
+  .theme li { margin-bottom: 3px; }
+
+  ol.pubs { list-style: none; margin: 0; padding: 0; }
+  .pub { display: flex; gap: 13px; padding: 13px 0; border-bottom: 1px solid #f0f2f6; font-size: 14.5px; line-height: 1.55; }
+  .pub:last-child { border-bottom: 0; }
+  .pubnum { flex: 0 0 26px; color: #aeb6c4; font-size: 12.5px; padding-top: 3px; text-align: right; }
+  .me { font-weight: 700; color: var(--accent); }
+  .doi { display: inline-block; margin-top: 3px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11.5px; color: var(--muted); text-decoration: none; }
+  .doi:hover { color: var(--accent); text-decoration: underline; }
+
+  .featured-intro { max-width: 760px; color: var(--muted); font-size: 15px; margin-bottom: 20px; }
+  .featured-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-bottom: 38px; }
+  .featured-paper {
+    display: flex; flex-direction: column; overflow: hidden; background: #fff;
+    border: 1px solid var(--line); border-radius: 9px;
+    box-shadow: 0 6px 18px rgba(20, 43, 75, .055);
+  }
+  .featured-figure {
+    display: flex; align-items: center; justify-content: center; height: 230px;
+    padding: 14px; background: #fff; border-bottom: 1px solid var(--line);
+  }
+  .featured-figure img { width: 100%; height: 100%; object-fit: contain; }
+  .featured-body { display: flex; flex-direction: column; flex: 1; padding: 18px 19px 19px; }
+  .featured-journal {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--accent); font-size: 11.5px; font-weight: 700; letter-spacing: .07em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .featured-title { font-size: 16.5px; line-height: 1.38; margin-bottom: 9px; }
+  .featured-summary { color: var(--muted); font-size: 14px; line-height: 1.5; margin-bottom: 12px; }
+  .featured-doi { margin-top: auto; }
+
+  .latest-paper {
+    display: grid; grid-template-columns: 1fr;
+    overflow: hidden; margin: 18px 0 38px; background: #fff;
+    border: 1px solid var(--line); border-radius: 11px;
+    box-shadow: 0 10px 28px rgba(20, 43, 75, .08);
+  }
+  .latest-figure {
+    display: flex; align-items: center; justify-content: center;
+    background: #fff; border-bottom: 1px solid var(--line);
+  }
+  .latest-figure img { display: block; width: 100%; height: auto; }
+  .latest-body { display: flex; flex-direction: column; padding: 26px 28px 28px; }
+  .latest-kicker {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--accent); font-size: 11.5px; font-weight: 700; letter-spacing: .09em;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .latest-title { font-size: 22px; line-height: 1.32; margin-bottom: 12px; }
+  .latest-authors { color: var(--muted); font-size: 13.5px; line-height: 1.5; margin-bottom: 14px; }
+  .latest-summary { color: var(--muted); font-size: 14.5px; line-height: 1.55; }
+  .latest-badge {
+    display: inline-block; align-self: flex-start; margin: 2px 0 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-soft); padding: 4px 9px; border-radius: 4px;
+  }
+  .latest-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 5px; }
+  .latest-actions a {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 12.5px; font-weight: 600; text-decoration: none;
+    color: var(--accent); border: 1px solid #c9d4e8; background: var(--accent-soft);
+    padding: 6px 11px; border-radius: 5px;
+  }
+  .latest-actions a:hover { background: #dce5f3; }
+
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 7px; padding: 20px 22px; margin-bottom: 16px; }
+  .card h3 { font-size: 17px; }
+  .card p { font-size: 14.5px; color: var(--muted); margin-bottom: 10px; }
+  .tag { display: inline-block; font-family: -apple-system, sans-serif; font-size: 11px;
+    text-transform: uppercase; letter-spacing: .05em; background: var(--accent-soft);
+    color: var(--accent); padding: 3px 9px; border-radius: 3px; margin-bottom: 9px; }
+
+  .stack { display: grid; grid-template-columns: 145px 1fr; gap: 8px 18px; font-size: 14.5px; }
+  .stack dt { font-weight: 700; color: var(--accent); }
+  .stack dd { margin: 0; color: var(--muted); }
+
+  .teaching-intro { font-size: 17px; margin-bottom: 22px; }
+  .course-list { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 28px; }
+  .course { margin: 0; }
+  .course-meta { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 12.5px; color: var(--accent); font-weight: 600; letter-spacing: .02em; }
+  .teaching-note { font-size: 14.5px; color: var(--muted); }
+
+  footer { padding: 34px 0 60px; font-size: 13.5px; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+  .back-top { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 13px; text-decoration: none; white-space: nowrap; }
+  .back-top:hover { text-decoration: underline; }
+  a { color: var(--accent); }
+
+  @media (max-width: 620px) {
+    h1 { font-size: 30px; }
+    .hero-row { grid-template-columns: 1fr; gap: 24px; }
+    .profile-photo { grid-row: 1; width: 160px; height: 176px; }
+    .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .metric { border-right: 1px solid var(--line); border-bottom: 0; }
+    .metric:nth-child(2n) { border-right: 0; }
+    .metric:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .metric:last-child { grid-column: 1 / -1; border-right: 0; }
+    .featured-grid { grid-template-columns: 1fr; }
+    .featured-figure { height: 210px; }
+    .latest-body { padding: 22px; }
+    .latest-title { font-size: 19px; }
+    .stack { grid-template-columns: 1fr; gap: 2px 0; }
+    .stack dd { margin-bottom: 10px; }
+    nav .wrap { gap: 14px; }
+  }
+
+  /* Immersive scientific hero, inspired by the reference site's composition. */
+  :root {
+    --ink: #172235; --muted: #536075; --accent: #35264f;
+    --accent-soft: #ede9f4; --line: #dbe2eb; --bg: #f7f9fc;
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; }
+  .wrap { max-width: 1100px; padding: 0 30px; }
+  .site-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+    background: rgba(8, 15, 28, .72); border-bottom: 1px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(16px);
+  }
+  .nav-inner { max-width: 1320px; margin: auto; padding: 18px 30px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+  .brand { color: #fff; font: 700 25px/1 Georgia, serif; letter-spacing: -.02em; text-decoration: none; white-space: nowrap; }
+  .brand span:last-child { display: inline-block; margin-left: 8px; font: 500 14px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: .02em; }
+  .brand-dot { color: #ad9ace; }
+  .nav-links { display: flex; align-items: center; gap: 24px; }
+  .nav-links a { color: rgba(255,255,255,.88); font-size: 14px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+  .nav-links a:hover, .nav-links a:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: 5px; }
+  .menu-toggle { display: none; background: none; border: 0; padding: 8px; cursor: pointer; }
+  .menu-toggle span { display: block; width: 25px; height: 2px; margin: 5px 0; border-radius: 2px; background: white; }
+  .hero {
+    min-height: 100svh; padding: 120px 24px 48px; border: 0;
+    background: linear-gradient(180deg, rgba(4,9,21,.5), rgba(4,9,21,.34) 48%, rgba(4,9,21,.76)),
+                url("images/hero-molecular-orbitals.jpg") center center / cover no-repeat;
+    color: #fff;
+  }
+  .hero-inner { min-height: calc(100svh - 168px); max-width: 1100px; margin: auto; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+  .hero-panel {
+    width: min(100%, 770px); padding: 45px 55px 48px; text-align: center;
+    background: rgba(17, 25, 42, .66); border: 1px solid rgba(255,255,255,.27);
+    border-radius: 19px; box-shadow: 0 22px 60px rgba(0,0,0,.3); backdrop-filter: blur(18px);
+  }
+  .hero-kicker { color: #d9d0e8; font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 18px; }
+  .hero h1 { color: #fff; font: 500 clamp(3.15rem, 5.8vw, 5.5rem)/1.03 Georgia, "Iowan Old Style", serif; letter-spacing: -.035em; margin-bottom: 24px; }
+  .hero-rule { display: block; width: 70px; height: 2px; margin: 0 auto 25px; background: rgba(255,255,255,.75); }
+  .hero .tagline { max-width: 620px; margin: auto; color: #f0edf6; font: 400 clamp(1.05rem, 1.8vw, 1.35rem)/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .hero .role { color: #dad5e4; font-size: 15px; margin: 20px 0 27px; }
+  .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 13px; }
+  .hero-button { display: inline-flex; justify-content: center; min-width: 190px; padding: 11px 22px; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none; border: 1px solid rgba(255,255,255,.35); }
+  .hero-button-primary { color: #fff; background: #46345f; }
+  .hero-button-primary:hover { background: #5c457b; }
+  .hero-button-light { color: #263043; background: #fff; }
+  .hero-button-light:hover { background: #eae7f1; }
+  .scroll-cue { color: rgba(255,255,255,.86); text-decoration: none; text-align: center; font-size: 13px; margin-top: auto; padding-top: 34px; }
+  .scroll-cue span { display: block; font-size: 20px; line-height: 1.2; }
+  .page-banner {
+    min-height: 340px; display: flex; align-items: end; padding: 115px 0 52px; border: 0;
+    color: #fff; background: linear-gradient(90deg, rgba(7,13,27,.9), rgba(17,25,46,.48)),
+      url("images/hero-molecular-orbitals.jpg") center 47% / cover no-repeat;
+  }
+  .page-banner .wrap { width: 100%; }
+  .page-kicker { color: #d9d0e8; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; margin: 0 0 11px; }
+  .page-banner h1 { color: #fff; font: 500 clamp(2.8rem, 5vw, 4.5rem)/1.1 Georgia, serif; margin: 0 0 12px; }
+  .page-banner p:last-child { color: #ece9f3; font-size: 18px; max-width: 720px; margin: 0; }
+  .nav-links a[aria-current="page"] { color: #fff; text-decoration: underline; text-underline-offset: 6px; }
+  .profile-strip { background: #fff; border-bottom: 1px solid var(--line); }
+  .profile-grid { display: grid; grid-template-columns: 132px minmax(0,1fr); gap: 30px; align-items: center; padding-top: 36px; padding-bottom: 36px; }
+  .profile-strip .profile-photo { width: 132px; height: 140px; border-radius: 12px; box-shadow: none; }
+  .profile-intro p { margin-bottom: 15px; max-width: 740px; }
+  .profile-eyebrow { color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+  .profile-intro .links a { font-size: 14px; border-radius: 999px; padding: 5px 12px; }
+  .metrics-band { background: #fff; padding: 0 0 30px; border-bottom: 1px solid var(--line); }
+  .metrics { margin-top: 0; border-radius: 12px; box-shadow: 0 12px 28px rgba(21, 33, 57, .06); }
+  .metric { padding: 18px 8px; }
+  .metric b { color: var(--accent); font: 600 27px/1.15 Georgia, serif; }
+  .metric span { font-size: 12px; }
+  section { padding: 70px 0; scroll-margin-top: 80px; }
+  section:nth-of-type(odd) { background: #fff; }
+  h2 { font: 600 clamp(1.8rem, 3vw, 2.4rem)/1.2 Georgia, serif; color: var(--ink); text-transform: none; letter-spacing: -.02em; margin-bottom: 28px; }
+  h3 { font-family: Georgia, "Iowan Old Style", serif; }
+  .lede { font: 400 21px/1.55 Georgia, serif; max-width: 900px; }
+  #about p { max-width: 880px; }
+  #research .wrap { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+  #research h2 { grid-column: 1 / -1; }
+  .theme { margin: 0; padding: 24px; border: 1px solid var(--line); border-left: 3px solid #735c9b; border-radius: 9px; background: #fff; box-shadow: 0 6px 20px rgba(20,34,55,.04); }
+  .theme h3 { font-size: 22px; }
+  .theme ul { font-size: 14px; }
+  #code .wrap { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }
+  #code h2 { grid-column: 1 / -1; }
+  .card, .featured-paper { border-radius: 11px; box-shadow: 0 6px 18px rgba(20,34,55,.04); }
+  #code .card { margin: 0; }
+  .featured-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .featured-figure { height: 190px; }
+  .latest-paper { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); margin-top: 0; }
+  .latest-figure { min-height: 500px; padding: 20px; border-bottom: 0; border-right: 1px solid var(--line); background: #e9edf3; }
+  .latest-figure img { width: auto; max-width: 100%; height: 460px; object-fit: contain; background: #fff; box-shadow: 0 12px 28px rgba(20,32,55,.17); }
+  .latest-body { justify-content: center; }
+  .latest-kicker, .featured-journal { font-size: 13px; }
+  .latest-title { font-size: 24px; }
+  .latest-badge { font-size: 12px; }
+  .latest-actions a { font-size: 14px; border-radius: 999px; padding: 8px 14px; }
+  .course-list { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .course-list .card { padding: 23px; }
+  .course-meta { font-size: 14px; }
+  .teaching-intro { max-width: 900px; }
+  a:focus-visible, button:focus-visible { outline: 3px solid #b69ad8; outline-offset: 3px; }
+  @media (max-width: 900px) {
+    .brand span:last-child { display: none; }
+    .nav-links { gap: 13px; }
+    .featured-grid, .course-list { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .latest-paper { grid-template-columns: 1fr; }
+    .latest-figure { border-right: 0; border-bottom: 1px solid var(--line); }
+  }
+  @media (max-width: 680px) {
+    .wrap { padding: 0 20px; }
+    .nav-inner { padding: 14px 20px; }
+    .menu-toggle { display: block; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 14px 20px 20px; flex-direction: column; align-items: stretch; gap: 0; background: rgba(10,17,31,.98); border-bottom: 1px solid rgba(255,255,255,.2); }
+    .nav-links.is-open { display: flex; }
+    .nav-links a { padding: 10px 0; }
+    .hero { min-height: 100svh; padding: 80px 16px 22px; background-position: 49% center; }
+    .hero-inner { min-height: calc(100svh - 102px); }
+    .hero-panel { padding: 29px 23px 32px; border-radius: 15px; }
+    .hero-kicker { font-size: 12px; letter-spacing: .08em; }
+    .hero h1 { font-size: clamp(2.75rem, 10vw, 4.3rem); }
+    .hero .tagline { font-size: 17px; }
+    .hero-actions { flex-direction: column; }
+    .hero-button { width: 100%; }
+    .profile-grid { grid-template-columns: 82px minmax(0,1fr); gap: 18px; align-items: start; }
+    .profile-strip .profile-photo { width: 82px; height: 92px; }
+    .profile-intro .links { grid-column: 1 / -1; }
+    .metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    #research .wrap, #code .wrap { grid-template-columns: 1fr; }
+    .featured-grid, .course-list { grid-template-columns: 1fr; }
+    .latest-body { padding: 23px; }
+    .latest-title { font-size: 22px; }
+    section { padding: 53px 0; }
+    .page-banner { min-height: 280px; padding: 100px 0 42px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body id="top">
+<nav class="site-nav" aria-label="Main navigation"><div class="nav-inner">
+  <a class="brand" href="index.html">RB<span class="brand-dot">.</span> <span>Computational Chemistry</span></a>
+  <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-controls="site-links" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="site-links">
+    <a href="index.html#about">About</a>
+    <a href="research.html">Research</a>
+    <a href="research.html#code">Code &amp; Data</a>
+    <a href="publications.html" aria-current="page">Publications</a>
+    <a href="index.html#teaching">Teaching</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</div></nav>
+<header class="page-banner"><div class="wrap"><p class="page-kicker">Rameswar Bhattacharjee · Computational Chemistry</p><h1>Publications</h1><p>Latest work, selected articles, and the complete list of 37 peer-reviewed publications.</p></div></header>
+<section id="latest-work"><div class="wrap">
+  <h2>Latest work</h2>
+  <article class="latest-paper" id="latest-publication">
+    <a class="latest-figure" href="https://doi.org/10.26434/chemrxiv.15006941/v1" target="_blank" rel="noopener">
+      <img src="images/latest/chemrxiv-preprint-first-page.jpg" alt="First page of the ChemRxiv preprint, showing the title, authors, abstract, and preprint notice" decoding="async">
+    </a>
+    <div class="latest-body">
+      <div class="latest-kicker">ChemRxiv preprint &middot; 2026 &middot; Under revision at JCIM</div>
+      <h3 class="latest-title">How Molecular Packing Controls Electronic Structure in &pi;-Stacked Radical Dimers: A DFT and Descriptor-Based Machine-Learning Study</h3>
+      <p class="latest-authors"><span class="me">Rameswar Bhattacharjee*</span>; Hans Lischka; Miklos Kertesz*</p>
+      <span class="latest-badge">First &amp; corresponding author</span>
+      <p class="latest-summary">Interpretable Extra Trees and neural-network models connect molecular packing to four electronic properties across 2,582 configurations of five radical-dimer families, achieving test-set R&sup2; values of 0.94&ndash;0.98 with rigorous geometry-clustered and Y-randomization validation.</p>
+      <div class="latest-actions">
+        <a href="https://doi.org/10.26434/chemrxiv.15006941/v1" target="_blank" rel="noopener">Read the preprint</a>
+        <a href="https://doi.org/10.5281/zenodo.21712041" target="_blank" rel="noopener">Data &amp; code</a>
+      </div>
+    </div>
+  </article>
+</div></section>
+<section id="publications"><div class="wrap">
+  <h2>Publications</h2>
+  <p style="font-size:14.5px;color:var(--muted)">37 peer-reviewed publications. Name in <span class="me">bold</span>;
+  asterisk (*) indicates corresponding author. See <a href="https://scholar.google.com/citations?user=E4XO67YAAAAJ" target="_blank" rel="noopener">Google Scholar</a> for citation metrics.</p>
+
+
+
+  <h3 style="font-size:18px;margin:30px 0 8px">Featured publications</h3>
+  <p class="featured-intro">Six representative papers spanning topological &pi;-conjugated materials and non-classical pancake bonding. Each image is drawn from the article's graphical or supporting artwork.</p>
+  <div class="featured-grid">
+    <article class="featured-paper">
+      <a class="featured-figure" href="https://doi.org/10.1021/jacs.4c10064" target="_blank" rel="noopener"><img src="images/featured/jacs-topological.jpg" alt="Orbital transition in a strained pi-conjugated polymer" loading="lazy" decoding="async"></a>
+      <div class="featured-body">
+        <div class="featured-journal">J. Am. Chem. Soc. &middot; 2024</div>
+        <h3 class="featured-title">Topological Transition in Aromatic and Quinonoid &pi;-Conjugated Polymers Induced by Static Strain</h3>
+        <p class="featured-summary">Static strain drives an electronic topological transition in conjugated polymers.</p>
+        <a class="doi featured-doi" href="https://doi.org/10.1021/jacs.4c10064" target="_blank" rel="noopener">10.1021/jacs.4c10064</a>
+      </div>
+    </article>
+    <article class="featured-paper">
+      <a class="featured-figure" href="https://doi.org/10.1021/jacs.3c14065" target="_blank" rel="noopener"><img src="images/featured/jacs-perylene.jpg" alt="Energy landscape connecting pi-stacked perylene dimer geometries" loading="lazy" decoding="async"></a>
+      <div class="featured-body">
+        <div class="featured-journal">J. Am. Chem. Soc. &middot; 2024</div>
+        <h3 class="featured-title">Structure and Bonding in &pi;-Stacked Perylenes: The Impact of Charge on Pancake Bonding</h3>
+        <p class="featured-summary">Charge distribution and orbital overlap explain stabilization across &pi;-stacked perylene dimers.</p>
+        <a class="doi featured-doi" href="https://doi.org/10.1021/jacs.3c14065" target="_blank" rel="noopener">10.1021/jacs.3c14065</a>
+      </div>
+    </article>
+    <article class="featured-paper">
+      <a class="featured-figure" href="https://doi.org/10.1039/D5SC00639B" target="_blank" rel="noopener"><img src="images/featured/quinonoid-radial.jpeg" alt="Energy-level crossings and molecular orbitals in quinonoid nanohoops" loading="lazy" decoding="async"></a>
+      <div class="featured-body">
+        <div class="featured-journal">Chemical Science &middot; 2025</div>
+        <h3 class="featured-title">Quinonoid Radial &pi;-Conjugation</h3>
+        <p class="featured-summary">Mixed aromatic and quinonoid nanohoops reveal frontier-orbital crossings and topological change.</p>
+        <a class="doi featured-doi" href="https://doi.org/10.1039/D5SC00639B" target="_blank" rel="noopener">10.1039/D5SC00639B</a>
+      </div>
+    </article>
+    <article class="featured-paper">
+      <a class="featured-figure" href="https://doi.org/10.1021/acsmaterialsau.4c00153" target="_blank" rel="noopener"><img src="images/featured/acene-dimers.jpg" alt="Molecular stacks illustrating pancake bonding in cationic acene dimers" loading="lazy" decoding="async"></a>
+      <div class="featured-body">
+        <div class="featured-journal">ACS Materials Au &middot; 2025</div>
+        <h3 class="featured-title">Pancake Bonding in the Stabilization of Cationic Acene Dimers</h3>
+        <p class="featured-summary">A comparative study of how charge stabilizes cationic acene dimers through pancake bonding.</p>
+        <a class="doi featured-doi" href="https://doi.org/10.1021/acsmaterialsau.4c00153" target="_blank" rel="noopener">10.1021/acsmaterialsau.4c00153</a>
+      </div>
+    </article>
+    <article class="featured-paper">
+      <a class="featured-figure" href="https://doi.org/10.1039/d4sc03774j" target="_blank" rel="noopener"><img src="images/featured/triphenylene.png" alt="Triphenylene radical-cation trimer with charge and spectroscopic features" loading="lazy" decoding="async"></a>
+      <div class="featured-body">
+        <div class="featured-journal">Chemical Science &middot; 2024</div>
+        <h3 class="featured-title">A Unique Trimeric Triphenylene Radical Cation: Stacking Aggregation, Bonding, and Stability</h3>
+        <p class="featured-summary">Crystallography and computation explain a shared-electron radical-cation trimer.</p>
+        <a class="doi featured-doi" href="https://doi.org/10.1039/d4sc03774j" target="_blank" rel="noopener">10.1039/d4sc03774j</a>
+      </div>
+    </article>
+    <article class="featured-paper">
+      <a class="featured-figure" href="https://doi.org/10.1021/acs.chemmater.3c02547" target="_blank" rel="noopener"><img src="images/featured/chemmat-topological.jpg" alt="Frontier orbitals switching under strain in an acene pi-conjugated polymer" loading="lazy" decoding="async"></a>
+      <div class="featured-body">
+        <div class="featured-journal">Chemistry of Materials &middot; 2024</div>
+        <h3 class="featured-title">Continuous Topological Transition and Bandgap Tuning in Ethynyl-Linked Acene &pi;-Conjugated Polymers through Mechanical Strain</h3>
+        <p class="featured-summary">Mechanical strain provides continuous control of electronic topology and band gaps.</p>
+        <a class="doi featured-doi" href="https://doi.org/10.1021/acs.chemmater.3c02547" target="_blank" rel="noopener">10.1021/acs.chemmater.3c02547</a>
+      </div>
+    </article>
+  </div>
+
+  <h3 style="font-size:16px;margin:26px 0 6px">Under review &amp; in preparation</h3>
+  <ol class="pubs">
+  <li class="pub"><span class="pubnum">&mdash;</span><div>
+    <div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; Lischka, H.; Kertesz, M.* How Molecular Packing
+    Controls Electronic Structure in &pi;-Stacked Radical Dimers: A DFT and Descriptor-Based Machine-Learning Study.
+    <em>Under revision at the Journal of Chemical Information and Modeling</em>, 2026.</div>
+    <a class="doi" href="https://doi.org/10.26434/chemrxiv.15006941/v1" target="_blank" rel="noopener">Preprint: 10.26434/chemrxiv.15006941/v1</a><br>
+    <a class="doi" href="https://doi.org/10.5281/zenodo.21712041" target="_blank" rel="noopener">Data &amp; code: 10.5281/zenodo.21712041</a>
+  </div></li>
+  <li class="pub"><span class="pubnum">&mdash;</span><div>
+    <div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; Lischka, H.; Kertesz, M.* Mapping the &pi;&ndash;&sigma;
+    Bonding Landscape in a Pancake-Bonded Radical Dimer via Data-Driven and Chemistry-Guided Analysis.
+    <em>Manuscript in final preparation</em>, 2026.</div>
+  </div></li>
+  </ol>
+
+  <h3 style="font-size:16px;margin:30px 0 6px">Peer-reviewed</h3>
+  <ol class="pubs">
+      <li class="pub"><span class="pubnum">37</span><div><div class="pub-text">Reid, H.W.; <span class="me">Bhattacharjee, R.*</span>; Sun, P.B.; Skala, M.E.; Serck, N.P.; Kertesz, M.; Golder, M.R.*; Jasti, R.* High Molar Mass [n]Cycloparaphenylene Conjugated Polymers and Copolymers with Improved Electronic Delocalization. Macromolecules 2026, 59, 6963–6972.</div><a class="doi" href="https://doi.org/10.1021/acs.macromol.6c00539" target="_blank" rel="noopener">10.1021/acs.macromol.6c00539</a></div></li>
+      <li class="pub"><span class="pubnum">36</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; McCormack, M.;‡ Zhu, Y; Wei, Z; Kertesz, M.*; Petrukhina, M.A.* Chemical Oxidation of Coronene: A Crystallographic and Computational Study of Charge-Regulated π-Stacking. ACS Phys. Chem. Au 2026, 571-579.</div><a class="doi" href="https://doi.org/10.1021/acsphyschemau.6c00020" target="_blank" rel="noopener">10.1021/acsphyschemau.6c00020</a></div></li>
+      <li class="pub"><span class="pubnum">35</span><div><div class="pub-text">Yin, G.* <span class="me">Bhattacharjee, R.</span>; Wang, T.; Kertesz, M. Wilson polygons and the topology of zero-dimensional systems. Phys. Rev. B. 2026, 113, 115104.</div><a class="doi" href="https://doi.org/10.1103/7wx3-6syf" target="_blank" rel="noopener">10.1103/7wx3-6syf</a></div></li>
+      <li class="pub"><span class="pubnum">34</span><div><div class="pub-text">McCormack, M.; <span class="me">Bhattacharjee, R.</span>; Wei, Z.; Petrukhina, M.A.* Chemical Oxidation of Chrysene: A Structural and Theoretical Description of a Mixed-Valent Trimeric Radical Cation. Cryst. Growth Des. 2025, 25, 9549–9554.</div><a class="doi" href="https://doi.org/10.1021/acs.cgd.5c01176" target="_blank" rel="noopener">10.1021/acs.cgd.5c01176</a></div></li>
+      <li class="pub"><span class="pubnum">33</span><div><div class="pub-text">McCormack, M.;‡ <span class="me">Bhattacharjee, R.</span>;‡ Wei, Z.; Kertesz, M.*; Petrukhina, M.A.* Building a Mixed Polyarene π-Stack with Charge Disparity through Chemical Oxidation: A Structural and Theoretical Investigation. Precis. Chem. 2025, 3, 631–639.</div><a class="doi" href="https://doi.org/10.1021/prechem.5c00066" target="_blank" rel="noopener">10.1021/prechem.5c00066</a></div></li>
+      <li class="pub"><span class="pubnum">32</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; Tovar, J.D; Kertesz, M.* Quinonoid radial π-conjugation. Chem. Sci. 2025, 16, 14595.</div><a class="doi" href="https://doi.org/10.1039/D5SC00639B" target="_blank" rel="noopener">10.1039/D5SC00639B</a></div></li>
+      <li class="pub"><span class="pubnum">31</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; Lischka, H.; Kertesz, M.* Pancake Bonding in the Stabilization of Cationic Acene Dimers ACS Mater. Au 2025, 5, 365–376.</div><a class="doi" href="https://doi.org/10.1021/acsmaterialsau.4c00153" target="_blank" rel="noopener">10.1021/acsmaterialsau.4c00153</a></div></li>
+      <li class="pub"><span class="pubnum">30</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; Kertesz, M.* Topological transition in aromatic and quinonoid π-conjugated polymers induced by static strain. J. Am. Chem. Soc. 2024, 146, 26497–26504.</div><a class="doi" href="https://doi.org/10.1021/jacs.4c10064" target="_blank" rel="noopener">10.1021/jacs.4c10064</a></div></li>
+      <li class="pub"><span class="pubnum">29</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.</span>;‡ McCormack, M.;‡ Zhou, Z.; Wei, Z.; Petrukhina, M.A.*; Kertesz, M.* A unique trimeric triphenylene radical cation: Stacking aggregation, bonding, and stability. Chem. Sci. 2024, 15, 15221-15231.</div><a class="doi" href="https://doi.org/10.1039/d4sc03774j" target="_blank" rel="noopener">10.1039/d4sc03774j</a></div></li>
+      <li class="pub"><span class="pubnum">28</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; Jervis, H.; McCormack, M.; Petrukhina, M.A.; Kertesz, M.* Structure and Bonding in π-Stacked Perylenes: The Impact of Charge on Pancake Bonding. J. Am. Chem. Soc. 2024, 146, 10465–10477.</div><a class="doi" href="https://doi.org/10.1021/jacs.3c14065" target="_blank" rel="noopener">10.1021/jacs.3c14065</a></div></li>
+      <li class="pub"><span class="pubnum">27</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; Kertesz, M.*. Continuous Topological Transition and Bandgap Tuning in Ethynyl-Linked Acene π-Conjugated Polymers through Mechanical Strain. Chem. Mater. 2024, 36, 1395–1404.</div><a class="doi" href="https://doi.org/10.1021/acs.chemmater.3c02547" target="_blank" rel="noopener">10.1021/acs.chemmater.3c02547</a></div></li>
+      <li class="pub"><span class="pubnum">26</span><div><div class="pub-text">Ren. L.; Xiao. Y.; <span class="me">Bhattacharjee, R.</span>; Wu. J.; Tang. P.; Caratzoulas, S.; Meng. C.; Guo, Q.*; Tsapatsis, M.* High Yield of L-Sorbose via D-Glucose Isomerization in Ethanol over a Bifunctional Titanium-Boron-Beta Zeolite. Chem. Eur. J. 2024, 30, e202402341</div><a class="doi" href="https://doi.org/10.1002/chem.202402341" target="_blank" rel="noopener">10.1002/chem.202402341</a></div></li>
+      <li class="pub"><span class="pubnum">25</span><div><div class="pub-text">McCormack, M.; <span class="me">Bhattacharjee, R.</span>; Jervis, H.; Wei, Z; Kertesz, M.*; Petrukhina, M.A.* Stabilizing Cationic Perylene Dimers through Pancake Bonding and Equal Charge Share. Cryst. Growth Des. 2023, 23 7496-7503.</div><a class="doi" href="https://doi.org/10.1021/acs.cgd.3c00912" target="_blank" rel="noopener">10.1021/acs.cgd.3c00912</a></div></li>
+      <li class="pub"><span class="pubnum">24</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.</span>; Hare, E; Miró, P.* Structure, Properties, and Reactivity of Polyoxocationic Zirconium and Hafnium Clusters: A Computational Investigation Inorg. Chem. 2023, 62, 5081-5087.</div><a class="doi" href="https://doi.org/10.1021/acs.inorgchem.2c04142" target="_blank" rel="noopener">10.1021/acs.inorgchem.2c04142</a></div></li>
+      <li class="pub"><span class="pubnum">23</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.</span>; Miró, P.* Aqueous Speciation of Tetravalent Actinides in the Presence of Chloride and Nitrate Ligands Inorg. Chem. 2022, 37, 14718-14725.</div><a class="doi" href="https://doi.org/10.1021/acs.inorgchem.2c02064" target="_blank" rel="noopener">10.1021/acs.inorgchem.2c02064</a></div></li>
+      <li class="pub"><span class="pubnum">22</span><div><div class="pub-text">Deegan, M. M.; <span class="me">Bhattacharjee, R.</span>; Caratzoulas, S.; Bloch, E. D.* Stabilizing Porosity in Organic Cages Through Coordination Chemistry. Inorg. Chem. 2021, 60, 7044– 7050.</div><a class="doi" href="https://doi.org/10.1021/acs.inorgchem.0c03590" target="_blank" rel="noopener">10.1021/acs.inorgchem.0c03590</a></div></li>
+      <li class="pub"><span class="pubnum">21</span><div><div class="pub-text">Liu, S; <span class="me">Bhattacharjee, R.</span>; Li S; Danielson, A; Mazal, T; Saha, B.*; Vlachos, D.G.* Thiol-promoted catalytic synthesis of high-performance furan-containing lubricant base oils from biomass-derived 2-alkylfurans and ketones. Green Chem. 2020, 22, 7896-7906.</div><a class="doi" href="https://doi.org/10.1039/D0GC01897J" target="_blank" rel="noopener">10.1039/D0GC01897J</a></div></li>
+      <li class="pub"><span class="pubnum">20</span><div><div class="pub-text">Rowland, C. A; Lorzing, G. R; <span class="me">Bhattacharjee, R.</span>; Caratzoulas, S; Yap, G; Bloch, E. D.* Design and synthesis of aryl-functionalized carbazole-based porous coordination cages. Chem. Commun. 2020, 56, 9352-9355.</div><a class="doi" href="https://doi.org/10.1039/D0CC03910A" target="_blank" rel="noopener">10.1039/D0CC03910A</a></div></li>
+      <li class="pub"><span class="pubnum">19</span><div><div class="pub-text">Anju, B. S.; <span class="me">Bhattacharjee, R.</span>; Ahammad, S.; Datta, A.*; Kundu, S.* Deoxygenation of Nitrosoarene by N- Heterocyclic Carbene (NHC): Elusive Breslow-type Intermediate Bridging Carbene and Nitrene. Chem. Commun. 2020, 56, 12166-12169.</div><a class="doi" href="https://doi.org/10.1039/D0CC05192F" target="_blank" rel="noopener">10.1039/D0CC05192F</a></div></li>
+      <li class="pub"><span class="pubnum">18</span><div><div class="pub-text">Lorzing, R. G.; Gosselin, E. J.; Lindner, B. S.; <span class="me">Bhattacharjee, R.</span>; Yap, G.; Caratzoulas, S.; Bloch, E. D.* Design and synthesis of capped-paddlewheel-based porous coordination cages. Chem. Commun. 2019, 55, 9527-9530.</div><a class="doi" href="https://doi.org/10.1039/C9CC05002G" target="_blank" rel="noopener">10.1039/C9CC05002G</a></div></li>
+      <li class="pub"><span class="pubnum">17</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.</span>; Majumdar, T.; Datta, A.* Analysis of pseudo jahn–teller distortion based on natural bond orbital theory: Case study for silicene. J. Comput. Chem. 2019, 40, 1488-1495.</div><a class="doi" href="https://doi.org/10.1002/jcc.25815" target="_blank" rel="noopener">10.1002/jcc.25815</a></div></li>
+      <li class="pub"><span class="pubnum">16</span><div><div class="pub-text">Sau, S. C.; <span class="me">Bhattacharjee, R.</span>; Vardhanapu, P. K.; Hota, P.K.; Vijaykumar, G.; Govindarajan, R.; Datta, A.*; Mandal, S. K.* Transforming atmospheric CO2 into alternative fuels: a metal-free approach under ambient conditions. Chem. Sci. 2019, 10, 1879–1884.</div><a class="doi" href="https://doi.org/10.1039/C8SC03581D" target="_blank" rel="noopener">10.1039/C8SC03581D</a></div></li>
+      <li class="pub"><span class="pubnum">15</span><div><div class="pub-text">Rath, S. P.; Sengupta, D.; Ghosh. P.; <span class="me">Bhattacharjee, R.</span>; Chakraborty, M.; Samanta, S.; Datta, A.; Goswami, S.* Effects of Ancillary Ligands on Redox and Chemical Properties of Ruthenium Coordinated Azoaromatic Pincer. Inorg. Chem. 2018, 57, 11995–12009.</div><a class="doi" href="https://doi.org/10.1021/acs.inorgchem.8b01558" target="_blank" rel="noopener">10.1021/acs.inorgchem.8b01558</a></div></li>
+      <li class="pub"><span class="pubnum">14</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.</span>; Datta, A.* Understanding Thermal and Photochemical Aryl-Aryl Cross-coupling using metal complex Chem. Eur. J. 2018, 24, 13636-13646.</div><a class="doi" href="https://doi.org/10.1002/chem.201802634" target="_blank" rel="noopener">10.1002/chem.201802634</a></div></li>
+      <li class="pub"><span class="pubnum">13</span><div><div class="pub-text">Pramanick, R.; <span class="me">Bhattacharjee, R.</span>; Sengupta, D.; Datta, A.*; Goswami, S.* An azoaromatic ligand as four electron four proton reservoir: catalytic dehydrogenation of alcohols by its Zinc(II) complex. Inorg. Chem. 2018, 57, 6816-6824.</div><a class="doi" href="https://doi.org/10.1021/acs.inorgchem.8b00034" target="_blank" rel="noopener">10.1021/acs.inorgchem.8b00034</a></div></li>
+      <li class="pub"><span class="pubnum">12</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.</span>; Datta, A.* Role of Carbon support for subnanometer gold-cluster catalyzed disiloxane synthesis from hydrosilane and water J. Phys. Chem. C 2017, 121, 20101-20112.</div><a class="doi" href="https://doi.org/10.1021/acs.jpcc.7b04419" target="_blank" rel="noopener">10.1021/acs.jpcc.7b04419</a></div></li>
+      <li class="pub"><span class="pubnum">11</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.</span>; Nijamudheen, A.; Datta, A.* Direct and autocatalytic reductive elimination from gold complexes ([(Ph3P)Au(Ar)(CF3)(X)], X= F, Cl, Br, I): The key role of halide ligands. Chem. Eur. J. 2017, 23, 4169-4179.</div><a class="doi" href="https://doi.org/10.1002/chem.201605784" target="_blank" rel="noopener">10.1002/chem.201605784</a></div></li>
+      <li class="pub"><span class="pubnum">10</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.</span>; Datta, A.* Supported sub-nanometer gold cluster catalyzed transfer hydrogenation of aldehydes to alcohols. J. Phys. Chem. C 2016, 120, 24449-24456.</div><a class="doi" href="https://doi.org/10.1021/acs.jpcc.6b07520" target="_blank" rel="noopener">10.1021/acs.jpcc.6b07520</a></div></li>
+      <li class="pub"><span class="pubnum">9</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.</span>; Nijamudheen, A.; Karmakar, S.; Datta, A.* Strain control: Reversible H2 activation and H2/D2 exchange in Pt complexes. Inorg. Chem. 2016, 55, 3023-3029.</div><a class="doi" href="https://doi.org/10.1021/acs.inorgchem.5b02904" target="_blank" rel="noopener">10.1021/acs.inorgchem.5b02904</a></div></li>
+      <li class="pub"><span class="pubnum">8</span><div><div class="pub-text">Sau, S. C.; <span class="me">Bhattacharjee, R.</span>; Vardhanapu, P. K.; Vijaykumar, G.; Datta, A.*; Mandal, S. K. * Metal‐free reduction of CO2 to methoxyborane under ambient conditions through borondiformate formation. Angew. Chem. Int. Ed. 2016, 128, 15371-15375.</div><a class="doi" href="https://doi.org/10.1002/anie.201609040" target="_blank" rel="noopener">10.1002/anie.201609040</a></div></li>
+      <li class="pub"><span class="pubnum">7</span><div><div class="pub-text">Asha, K.; <span class="me">Bhattacharjee, R.</span>; Mandal, S.* Complete transmetalation in a metal–organic framework by metal ion metathesis in a single crystal for selective sensing of phosphate ions in aqueous media. Angew. Chem. Int. Ed. 2016, 128, 11700-11704.</div><a class="doi" href="https://doi.org/10.1002/anie.201606185" target="_blank" rel="noopener">10.1002/anie.201606185</a></div></li>
+      <li class="pub"><span class="pubnum">6</span><div><div class="pub-text">Sengupta, D.; <span class="me">Bhattacharjee, R.</span>; Pramanick, R.; Rath, S. P.; Saha Chowdhury, N.; Datta, A.*; Goswami, S.* Exclusively ligand-mediated catalytic dehydrogenation of alcohols. Inorg. Chem. 2016, 55, 9602-9610.</div><a class="doi" href="https://doi.org/10.1021/acs.inorgchem.6b01310" target="_blank" rel="noopener">10.1021/acs.inorgchem.6b01310</a></div></li>
+      <li class="pub"><span class="pubnum">5</span><div><div class="pub-text">Roy, S.; Baral, A.; <span class="me">Bhattacharjee, R.</span>; Jana, B.; Datta, A.; Ghosh, S.; Banerjee, A.* Preparation of multi-coloured different sized fluorescent gold clusters from blue to NIR, structural analysis of the blue emitting Au7 cluster, and cell- imaging by the NIR gold cluster. Nanoscale 2015, 7, 1912-1920.</div><a class="doi" href="https://doi.org/10.1039/C4NR04338C" target="_blank" rel="noopener">10.1039/C4NR04338C</a></div></li>
+      <li class="pub"><span class="pubnum">4</span><div><div class="pub-text">Pratik, S. M.; Chowdhury, C.; <span class="me">Bhattacharjee, R.</span>; Jahiruddin, S.; Datta, A.* Pseudo Jahn–Teller distortion for a tricyclic carbon sulfide (C6S8) and its suppression in S-oxygenated dithiine (C4H4(SO2)2). Chem. Phys. 2015, 460, 101-105.</div><a class="doi" href="https://doi.org/10.1016/j.chemphys.2015.04.009" target="_blank" rel="noopener">10.1016/j.chemphys.2015.04.009</a></div></li>
+      <li class="pub"><span class="pubnum">3</span><div><div class="pub-text"><span class="me">Bhattacharjee, R.</span>; Nijamudheen, A.; Datta, A. Mechanistic insights into the synergistic catalysis by Au (I), Ga (III), and counterions in the Nakamura reaction. Org. Biomol. Chem. 2015, 13, 7412-7420.</div><a class="doi" href="https://doi.org/10.1039/C5OB00626K" target="_blank" rel="noopener">10.1039/C5OB00626K</a></div></li>
+      <li class="pub"><span class="pubnum">2</span><div><div class="pub-text">Nijamudheen, A.; <span class="me">Bhattacharjee, R.</span>; Choudhury, S.; Datta, A.* Electronic and chemical properties of germanene: The crucial role of buckling. J. Phys. Chem. C 2015, 119, 3802–3809.</div><a class="doi" href="https://doi.org/10.1021/jp511488m" target="_blank" rel="noopener">10.1021/jp511488m</a></div></li>
+      <li class="pub"><span class="pubnum">1</span><div><div class="pub-text">Maiti, D. K.; <span class="me">Bhattacharjee, R.</span>; Datta, A.*; Banerjee, A.* Modulation of fluorescence resonance energy transfer efficiency for white light emission from a series of stilbene-perylene based donor–acceptor pair. J. Phys. Chem. C 2013, 117, 23178-23189.</div><a class="doi" href="https://doi.org/10.1021/jp409042p" target="_blank" rel="noopener">10.1021/jp409042p</a></div></li>
+  </ol>
+</div></section>
+<footer><div class="wrap">
+  <span>&copy; <span id="yr"></span> Rameswar Bhattacharjee.</span>
+  <a class="back-top" href="#top">Back to top &uarr;</a>
+</div></footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const menuButton = document.querySelector('.menu-toggle');
+  const siteLinks = document.querySelector('.nav-links');
+  menuButton.addEventListener('click', () => {
+    const open = siteLinks.classList.toggle('is-open');
+    menuButton.setAttribute('aria-expanded', String(open));
+  });
+  siteLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    siteLinks.classList.remove('is-open');
+    menuButton.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+</body>
+</html>
