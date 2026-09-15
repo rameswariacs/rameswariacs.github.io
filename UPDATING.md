@@ -20,7 +20,7 @@ regenerate the three pages so navigation and shared layout stay in sync.
 
    ```html
    <div class="metric"><b>37</b><span>Publications</span></div>
-   <div class="metric"><b>1,196</b><span>Citations</span></div>
+   <div class="metric"><b>1,200</b><span>Citations</span></div>
    <div class="metric"><b>19</b><span>h-index</span></div>
    <div class="metric"><b>17</b><span>First author</span></div>
    <div class="metric"><b>7</b><span>Corresponding author</span></div>
@@ -28,13 +28,8 @@ regenerate the three pages so navigation and shared layout stay in sync.
 
    Change only the numbers between `<b>` and `</b>`.
 
-6. Just below, update the date in this line:
-
-   ```html
-   <p class="asof">Citation metrics from <a href="...">Google Scholar</a>, August 2026.</p>
-   ```
-
-7. Scroll to the bottom, click **Commit changes**
+6. Scroll to the bottom, click **Commit changes**. The source line says
+   "Citation metrics from Google Scholar" without a date.
 
 Done. The site rebuilds in about a minute.
 
@@ -43,11 +38,10 @@ Done. The site rebuilds in about a minute.
 Open `build_site.py`, edit the block near the top:
 
 ```python
-CITATIONS     = "1,196"
+CITATIONS     = "1,200"
 H_INDEX       = "19"
 FIRST_AUTHOR  = "17"
 CORRESPONDING_AUTHOR = "7"
-METRICS_AS_OF = "August 2026"
 ```
 
 Then run `python3 build_site.py` and upload the new `index.html`.
@@ -157,8 +151,9 @@ in `build_site.py`.
 The home gallery uses issue covers from journals in which your work has
 appeared. Add the images to `images/journals/` using the filenames listed in
 `README.md`, then run `python3 build_site.py`. Available covers appear in the
-gallery; missing covers are skipped. The covers are journal examples rather than claims
-that your articles were selected as cover features.
+gallery; missing covers are skipped. Three covers featuring papers you
+coauthored appear first. The original six follow, and four more journals sit
+inside the expandable "More journals" area.
 
 ## F. Restoring the GitHub link
 

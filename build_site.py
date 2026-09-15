@@ -10,13 +10,12 @@ GITHUB_USER = "rameswariacs"
 SHOW_GITHUB = False
 
 # ---------------------------------------------------------------
-# EDIT THESE FIVE LINES when you refresh your publication metrics,
+# EDIT THESE FOUR LINES when you refresh your publication metrics,
 # then re-run:  python3 build_site.py
-CITATIONS     = "1,196"
+CITATIONS     = "1,200"
 H_INDEX       = "19"
 FIRST_AUTHOR  = "17"
 CORRESPONDING_AUTHOR = "7"
-METRICS_AS_OF = "August 2026"
 # ---------------------------------------------------------------
 # ---------------------------------------------------------------
 
@@ -150,27 +149,63 @@ JOURNAL_COVERS = [
     ('ACS Materials Au', 'acs-materials-au.jpg'),
     ('ACS Physical Chemistry Au', 'acs-physical-chemistry-au.jpg'),
 ]
-cover_dir = pathlib.Path('images/journals')
-available_covers = [
-    (name, filename) for name, filename in JOURNAL_COVERS
-    if (cover_dir / filename).is_file()
+FEATURED_COVERS = [
+    ('Organic & Biomolecular Chemistry', 'organic-biomolecular-chemistry.jpg'),
+    ('Journal of Computational Chemistry', 'journal-of-computational-chemistry.jpg'),
+    ('Precision Chemistry', 'precision-chemistry.jpg'),
 ]
-gallery_html = ''
-gallery_nav = ''
-if available_covers:
-    gallery_nav = '<a href="#journal-gallery">Gallery</a>'
-    cards = '\n'.join(
+MORE_COVERS = [
+    ('Green Chemistry', 'green-chemistry.jpg'),
+    ('Inorganic Chemistry', 'inorganic-chemistry.jpg'),
+    ('The Journal of Physical Chemistry C', 'journal-of-physical-chemistry-c.jpg'),
+    ('Chemistry – A European Journal', 'chemistry-a-european-journal.jpg'),
+]
+cover_dir = pathlib.Path('images/journals')
+def available(covers):
+    return [(name, filename) for name, filename in covers if (cover_dir / filename).is_file()]
+
+featured_covers = available(FEATURED_COVERS)
+main_covers = available(JOURNAL_COVERS)
+more_covers = available(MORE_COVERS)
+
+def cover_card(name, filename, featured=False):
+    note = '<span class="cover-feature-note">My article featured on the cover</span>' if featured else ''
+    return (
         '<figure class="journal-cover-card">'
         f'<img src="images/journals/{filename}" alt="{html.escape(name)} issue cover" loading="lazy" decoding="async">'
-        f'<figcaption>{html.escape(name)}</figcaption>'
+        f'<figcaption>{html.escape(name)}{note}</figcaption>'
         '</figure>'
-        for name, filename in available_covers
     )
+
+gallery_html = ''
+gallery_nav = ''
+if featured_covers or main_covers or more_covers:
+    gallery_nav = '<a href="#journal-gallery">Gallery</a>'
+    featured_html = (
+        '<h3 class="gallery-subtitle">My work on journal covers</h3>'
+        '<p class="gallery-caption">These covers feature papers I coauthored.</p>'
+        '<div class="journal-cover-grid featured-cover-grid">'
+        + '\n'.join(cover_card(name, filename, True) for name, filename in featured_covers)
+        + '</div>'
+    ) if featured_covers else ''
+    main_html = (
+        '<h3 class="gallery-subtitle">Journals where I have published</h3>'
+        '<div class="journal-cover-grid">'
+        + '\n'.join(cover_card(name, filename) for name, filename in main_covers)
+        + '</div>'
+    ) if main_covers else ''
+    more_html = (
+        '<details class="more-journals">'
+        f'<summary>More journals ({len(more_covers)})</summary>'
+        '<div class="journal-cover-grid">'
+        + '\n'.join(cover_card(name, filename) for name, filename in more_covers)
+        + '</div></details>'
+    ) if more_covers else ''
     gallery_html = (
         '<section id="journal-gallery"><div class="wrap">'
         '<h2>Journal gallery</h2>'
-        '<p class="gallery-intro">Issue covers from journals in which my work has appeared.</p>'
-        f'<div class="journal-cover-grid">{cards}</div>'
+        '<p class="gallery-intro">Selected issue covers from journals in which my work has appeared.</p>'
+        f'{featured_html}{main_html}{more_html}'
         '</div></section>'
     )
 
@@ -464,10 +499,17 @@ HTML = f"""<!DOCTYPE html>
   .course-meta {{ font-size: 14px; }}
   .teaching-intro {{ max-width: 900px; }}
   .gallery-intro {{ color: var(--muted); font-size: 16px; margin-top: -12px; margin-bottom: 24px; }}
+  .gallery-subtitle {{ margin: 34px 0 8px; color: var(--ink); font: 600 22px/1.25 Georgia, serif; }}
+  .gallery-caption {{ margin: 0 0 20px; color: var(--muted); font-size: 15px; }}
   .journal-cover-grid {{ display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; }}
   .journal-cover-card {{ margin: 0; padding: 18px 18px 15px; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: 0 6px 18px rgba(20,34,55,.06); text-align: center; }}
   .journal-cover-card img {{ display: block; width: 100%; height: 350px; object-fit: contain; background: #fff; }}
   .journal-cover-card figcaption {{ padding-top: 13px; color: var(--ink); font-size: 14px; font-weight: 700; }}
+  .featured-cover-grid .journal-cover-card {{ border-color: #c7b3db; background: #fbf9fd; }}
+  .cover-feature-note {{ display: block; margin-top: 8px; color: #684985; font-size: 12px; font-weight: 600; }}
+  .more-journals {{ margin-top: 30px; }}
+  .more-journals summary {{ display: table; margin: 0 auto 22px; padding: 10px 18px; border: 1px solid #c9b7da; border-radius: 999px; background: #f5f0fa; color: #593d72; font-weight: 700; cursor: pointer; }}
+  .more-journals[open] {{ padding-bottom: 8px; }}
   a:focus-visible, button:focus-visible {{ outline: 3px solid #b69ad8; outline-offset: 3px; }}
 
   /* Year-grouped publication rows inside a translucent scientific panel. */
@@ -511,13 +553,13 @@ HTML = f"""<!DOCTYPE html>
   /* A restrained hover response for links, cards, and imagery. */
   .nav-links a, .hero-button, .links a, .latest-actions a, .doi,
   .theme, .card, .featured-paper, .pub-row, .featured-figure img,
-  .latest-figure img, .journal-cover-card {{
+  .latest-figure img, .journal-cover-card, .more-journals summary {{
     transition: transform .24s ease, box-shadow .24s ease,
       background-color .24s ease, border-color .24s ease, color .24s ease;
   }}
   @media (hover: hover) {{
     .nav-links a:hover, .hero-button:hover, .links a:hover,
-    .latest-actions a:hover, .doi:hover {{ transform: translateY(-2px); }}
+    .latest-actions a:hover, .doi:hover, .more-journals summary:hover {{ transform: translateY(-2px); }}
     .theme:hover, .card:hover, .featured-paper:hover,
     .journal-cover-card:hover {{ transform: translateY(-4px); box-shadow: 0 14px 32px rgba(20,30,54,.15); }}
     .pub-row:hover {{ transform: translateX(4px); background: rgba(255,255,255,.09); }}
@@ -571,7 +613,7 @@ HTML = f"""<!DOCTYPE html>
     html {{ scroll-behavior: auto; }}
     .nav-links a, .hero-button, .links a, .latest-actions a, .doi,
     .theme, .card, .featured-paper, .pub-row, .featured-figure img,
-    .latest-figure img, .journal-cover-card {{ transition: none; }}
+    .latest-figure img, .journal-cover-card, .more-journals summary {{ transition: none; }}
   }}
 </style>
 </head>
@@ -630,7 +672,7 @@ HTML = f"""<!DOCTYPE html>
     <div class="metric"><b>{FIRST_AUTHOR}</b><span>First author</span></div>
     <div class="metric"><b>{CORRESPONDING_AUTHOR}</b><span>Corresponding author</span></div>
   </div>
-  <p class="asof">Citation metrics from <a href="https://scholar.google.com/citations?user=E4XO67YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>, {METRICS_AS_OF}.</p>
+  <p class="asof">Citation metrics from <a href="https://scholar.google.com/citations?user=E4XO67YAAAAJ" target="_blank" rel="noopener">Google Scholar</a>.</p>
 </div></div>
 
 <section id="latest-work"><div class="wrap">

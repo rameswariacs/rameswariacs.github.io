@@ -288,10 +288,17 @@
   .course-meta { font-size: 14px; }
   .teaching-intro { max-width: 900px; }
   .gallery-intro { color: var(--muted); font-size: 16px; margin-top: -12px; margin-bottom: 24px; }
+  .gallery-subtitle { margin: 34px 0 8px; color: var(--ink); font: 600 22px/1.25 Georgia, serif; }
+  .gallery-caption { margin: 0 0 20px; color: var(--muted); font-size: 15px; }
   .journal-cover-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; }
   .journal-cover-card { margin: 0; padding: 18px 18px 15px; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: 0 6px 18px rgba(20,34,55,.06); text-align: center; }
   .journal-cover-card img { display: block; width: 100%; height: 350px; object-fit: contain; background: #fff; }
   .journal-cover-card figcaption { padding-top: 13px; color: var(--ink); font-size: 14px; font-weight: 700; }
+  .featured-cover-grid .journal-cover-card { border-color: #c7b3db; background: #fbf9fd; }
+  .cover-feature-note { display: block; margin-top: 8px; color: #684985; font-size: 12px; font-weight: 600; }
+  .more-journals { margin-top: 30px; }
+  .more-journals summary { display: table; margin: 0 auto 22px; padding: 10px 18px; border: 1px solid #c9b7da; border-radius: 999px; background: #f5f0fa; color: #593d72; font-weight: 700; cursor: pointer; }
+  .more-journals[open] { padding-bottom: 8px; }
   a:focus-visible, button:focus-visible { outline: 3px solid #b69ad8; outline-offset: 3px; }
 
   /* Year-grouped publication rows inside a translucent scientific panel. */
@@ -335,13 +342,13 @@
   /* A restrained hover response for links, cards, and imagery. */
   .nav-links a, .hero-button, .links a, .latest-actions a, .doi,
   .theme, .card, .featured-paper, .pub-row, .featured-figure img,
-  .latest-figure img, .journal-cover-card {
+  .latest-figure img, .journal-cover-card, .more-journals summary {
     transition: transform .24s ease, box-shadow .24s ease,
       background-color .24s ease, border-color .24s ease, color .24s ease;
   }
   @media (hover: hover) {
     .nav-links a:hover, .hero-button:hover, .links a:hover,
-    .latest-actions a:hover, .doi:hover { transform: translateY(-2px); }
+    .latest-actions a:hover, .doi:hover, .more-journals summary:hover { transform: translateY(-2px); }
     .theme:hover, .card:hover, .featured-paper:hover,
     .journal-cover-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(20,30,54,.15); }
     .pub-row:hover { transform: translateX(4px); background: rgba(255,255,255,.09); }
@@ -395,7 +402,7 @@
     html { scroll-behavior: auto; }
     .nav-links a, .hero-button, .links a, .latest-actions a, .doi,
     .theme, .card, .featured-paper, .pub-row, .featured-figure img,
-    .latest-figure img, .journal-cover-card { transition: none; }
+    .latest-figure img, .journal-cover-card, .more-journals summary { transition: none; }
   }
 </style>
 </head>
