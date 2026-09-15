@@ -492,6 +492,9 @@ HTML = f"""<!DOCTYPE html>
   h3 {{ font-family: Georgia, "Iowan Old Style", serif; }}
   .lede {{ font: 400 21px/1.55 Georgia, serif; max-width: 900px; }}
   #about p {{ max-width: 880px; }}
+  .about-layout {{ display: grid; grid-template-columns: minmax(0,1fr) 226px; gap: 34px; align-items: start; }}
+  .about-copy {{ grid-column: 1; grid-row: 1; }}
+  .about-portrait {{ grid-column: 2; grid-row: 1; display: block; width: 226px; height: 282px; object-fit: cover; object-position: 48% 35%; border-radius: 12px; box-shadow: 0 12px 28px rgba(20,34,55,.14); }}
   #research .wrap {{ display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }}
   #research h2 {{ grid-column: 1 / -1; }}
   .theme {{ margin: 0; padding: 24px; border: 1px solid var(--line); border-left: 3px solid #735c9b; border-radius: 9px; background: #fff; box-shadow: 0 6px 20px rgba(20,34,55,.04); }}
@@ -616,6 +619,9 @@ HTML = f"""<!DOCTYPE html>
     .profile-strip .profile-photo {{ width: 82px; height: 92px; }}
     .profile-intro .links {{ grid-column: 1 / -1; }}
     .metrics {{ grid-template-columns: repeat(2,minmax(0,1fr)); }}
+    .about-layout {{ grid-template-columns: 1fr; gap: 18px; }}
+    .about-portrait {{ grid-column: 1; grid-row: 1; width: 180px; height: 225px; justify-self: center; }}
+    .about-copy {{ grid-column: 1; grid-row: 2; }}
     #research .wrap, #code .wrap {{ grid-template-columns: 1fr; }}
     .featured-grid, .course-list {{ grid-template-columns: 1fr; }}
     .latest-body {{ padding: 23px; }}
@@ -721,6 +727,9 @@ HTML = f"""<!DOCTYPE html>
 
 <section id="about"><div class="wrap">
   <h2>About</h2>
+  <div class="about-layout">
+  <img class="about-portrait" src="images/profile.png" alt="Portrait of Rameswar Bhattacharjee" width="800" height="800" loading="lazy" decoding="async">
+  <div class="about-copy">
   <p class="lede">I am a computational chemist working on the electronic structure of molecular and polymeric
   materials, with a focus on systems where conventional closed-shell intuition breaks down &mdash; open-shell
   radical aggregates, topologically non-trivial conjugated polymers, and strongly correlated &pi;-stacks.</p>
@@ -733,6 +742,8 @@ HTML = f"""<!DOCTYPE html>
   <p>I hold a Ph.D. from the Indian Association for the Cultivation of Science and have held postdoctoral
   positions at the University of Delaware, the University of South Dakota, and Georgetown University. I am a
   named participant on active NSF and DOE research awards.</p>
+  </div>
+  </div>
 </div></section>
 
 {secondary_preview_html}

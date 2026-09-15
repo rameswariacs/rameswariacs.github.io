@@ -13,6 +13,8 @@ Upload or replace these files in `rameswariacs/rameswariacs.github.io`, preservi
 
 Keep the existing profile and featured-publication images in `images/`. Commit the changes on the branch configured for GitHub Pages. The latest-work image is the actual first page of the version-1 ChemRxiv PDF, rendered as a web image; its card continues to label the study as a preprint under revision.
 
+The homepage displays `images/profile.png` as a small portrait beside About.
+
 ## Journal gallery covers
 
 The homepage gallery displays the issue-cover images present in
