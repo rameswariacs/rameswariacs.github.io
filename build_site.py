@@ -76,7 +76,7 @@ THEMES = [
       "Test-set R² = 0.94–0.98; 0.82–0.92 on held-out geometry clusters",
       "500-fold Y-randomization and system-mean baseline controls",
       "Data and code released openly on Zenodo",
-      "Under revision at J. Chem. Inf. Model., 2026"]),
+      "ChemRxiv preprint; under revision at J. Chem. Inf. Model., 2026"]),
     ("Mapping π–σ bonding landscapes in radical dimers",
      "Pancake-bonded π-dimers can compete with σ-bonded alternatives, but the structural pathways connecting them are "
      "poorly characterized. Combining conformational sampling, supervised classification, and intrinsic reaction "
@@ -225,6 +225,41 @@ HTML = f"""<!DOCTYPE html>
   .featured-summary {{ color: var(--muted); font-size: 14px; line-height: 1.5; margin-bottom: 12px; }}
   .featured-doi {{ margin-top: auto; }}
 
+  .latest-paper {{
+    display: grid; grid-template-columns: 1fr;
+    overflow: hidden; margin: 18px 0 38px; background: #fff;
+    border: 1px solid var(--line); border-radius: 11px;
+    box-shadow: 0 10px 28px rgba(20, 43, 75, .08);
+  }}
+  .latest-figure {{
+    display: flex; align-items: center; justify-content: center;
+    background: #fff; border-bottom: 1px solid var(--line);
+  }}
+  .latest-figure img {{ display: block; width: 100%; height: auto; }}
+  .latest-body {{ display: flex; flex-direction: column; padding: 26px 28px 28px; }}
+  .latest-kicker {{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--accent); font-size: 11.5px; font-weight: 700; letter-spacing: .09em;
+    text-transform: uppercase; margin-bottom: 10px;
+  }}
+  .latest-title {{ font-size: 22px; line-height: 1.32; margin-bottom: 12px; }}
+  .latest-authors {{ color: var(--muted); font-size: 13.5px; line-height: 1.5; margin-bottom: 14px; }}
+  .latest-summary {{ color: var(--muted); font-size: 14.5px; line-height: 1.55; }}
+  .latest-badge {{
+    display: inline-block; align-self: flex-start; margin: 2px 0 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-soft); padding: 4px 9px; border-radius: 4px;
+  }}
+  .latest-actions {{ display: flex; flex-wrap: wrap; gap: 10px; margin-top: 5px; }}
+  .latest-actions a {{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 12.5px; font-weight: 600; text-decoration: none;
+    color: var(--accent); border: 1px solid #c9d4e8; background: var(--accent-soft);
+    padding: 6px 11px; border-radius: 5px;
+  }}
+  .latest-actions a:hover {{ background: #dce5f3; }}
+
   .card {{ background: #fff; border: 1px solid var(--line); border-radius: 7px; padding: 20px 22px; margin-bottom: 16px; }}
   .card h3 {{ font-size: 17px; }}
   .card p {{ font-size: 14.5px; color: var(--muted); margin-bottom: 10px; }}
@@ -261,6 +296,8 @@ HTML = f"""<!DOCTYPE html>
     .metric:last-child {{ grid-column: 1 / -1; border-right: 0; }}
     .featured-grid {{ grid-template-columns: 1fr; }}
     .featured-figure {{ height: 210px; }}
+    .latest-body {{ padding: 22px; }}
+    .latest-title {{ font-size: 19px; }}
     .stack {{ grid-template-columns: 1fr; gap: 2px 0; }}
     .stack dd {{ margin-bottom: 10px; }}
     nav .wrap {{ gap: 14px; }}
@@ -354,6 +391,24 @@ HTML = f"""<!DOCTYPE html>
   <p style="font-size:14.5px;color:var(--muted)">{len(pubs)} peer-reviewed publications. Name in <span class="me">bold</span>;
   asterisk (*) indicates corresponding author. See <a href="https://scholar.google.com/citations?user=E4XO67YAAAAJ" target="_blank" rel="noopener">Google Scholar</a> for citation metrics.</p>
 
+  <h3 style="font-size:18px;margin:30px 0 8px">Latest work</h3>
+  <article class="latest-paper" id="latest-publication">
+    <a class="latest-figure" href="https://doi.org/10.26434/chemrxiv.15006941/v1" target="_blank" rel="noopener">
+      <img src="images/latest/ml-radical-dimers-toc.png" alt="Machine-learning workflow mapping pi-stacked radical-dimer coordinates and structural descriptors to predicted electronic properties" decoding="async">
+    </a>
+    <div class="latest-body">
+      <div class="latest-kicker">ChemRxiv preprint &middot; 2026 &middot; Under revision at JCIM</div>
+      <h3 class="latest-title">How Molecular Packing Controls Electronic Structure in &pi;-Stacked Radical Dimers: A DFT and Descriptor-Based Machine-Learning Study</h3>
+      <p class="latest-authors"><span class="me">Rameswar Bhattacharjee*</span>; Hans Lischka; Miklos Kertesz*</p>
+      <span class="latest-badge">First &amp; corresponding author</span>
+      <p class="latest-summary">Interpretable Extra Trees and neural-network models connect molecular packing to four electronic properties across 2,582 configurations of five radical-dimer families, achieving test-set R&sup2; values of 0.94&ndash;0.98 with rigorous geometry-clustered and Y-randomization validation.</p>
+      <div class="latest-actions">
+        <a href="https://doi.org/10.26434/chemrxiv.15006941/v1" target="_blank" rel="noopener">Read the preprint</a>
+        <a href="https://doi.org/10.5281/zenodo.21712041" target="_blank" rel="noopener">Data &amp; code</a>
+      </div>
+    </div>
+  </article>
+
   <h3 style="font-size:18px;margin:30px 0 8px">Featured publications</h3>
   <p class="featured-intro">Six representative papers spanning topological &pi;-conjugated materials and non-classical pancake bonding. Each image is drawn from the article's graphical or supporting artwork.</p>
   <div class="featured-grid">
@@ -419,6 +474,7 @@ HTML = f"""<!DOCTYPE html>
     <div class="pub-text"><span class="me">Bhattacharjee, R.*</span>; Lischka, H.; Kertesz, M.* How Molecular Packing
     Controls Electronic Structure in &pi;-Stacked Radical Dimers: A DFT and Descriptor-Based Machine-Learning Study.
     <em>Under revision at the Journal of Chemical Information and Modeling</em>, 2026.</div>
+    <a class="doi" href="https://doi.org/10.26434/chemrxiv.15006941/v1" target="_blank" rel="noopener">Preprint: 10.26434/chemrxiv.15006941/v1</a><br>
     <a class="doi" href="https://doi.org/10.5281/zenodo.21712041" target="_blank" rel="noopener">Data &amp; code: 10.5281/zenodo.21712041</a>
   </div></li>
   <li class="pub"><span class="pubnum">&mdash;</span><div>
