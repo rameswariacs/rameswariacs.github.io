@@ -270,11 +270,6 @@ HTML = f"""<!DOCTYPE html>
 
   header {{ padding: 62px 0 40px; border-bottom: 1px solid var(--line); }}
   .hero-row {{ display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 38px; align-items: center; }}
-  .profile-photo {{
-    display: block; width: 190px; height: 210px; object-fit: cover; object-position: center 34%;
-    border-radius: 12px; border: 1px solid var(--line); background: #fff;
-    box-shadow: 0 10px 28px rgba(20, 43, 75, .13);
-  }}
   h1 {{ font-size: 40px; line-height: 1.12; margin: 0 0 10px; letter-spacing: -.015em; color: var(--accent); }}
   .tagline {{ font-size: 18px; color: var(--muted); font-style: italic; margin: 0 0 6px; }}
   .role {{ font-size: 16px; margin: 0 0 22px; }}
@@ -404,7 +399,6 @@ HTML = f"""<!DOCTYPE html>
   @media (max-width: 620px) {{
     h1 {{ font-size: 30px; }}
     .hero-row {{ grid-template-columns: 1fr; gap: 24px; }}
-    .profile-photo {{ grid-row: 1; width: 160px; height: 176px; }}
     .metrics {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
     .metric {{ border-right: 1px solid var(--line); border-bottom: 0; }}
     .metric:nth-child(2n) {{ border-right: 0; }}
@@ -476,8 +470,7 @@ HTML = f"""<!DOCTYPE html>
   .page-banner p:last-child {{ color: #ece9f3; font-size: 18px; max-width: 720px; margin: 0; }}
   .nav-links a[aria-current="page"] {{ color: #fff; text-decoration: underline; text-underline-offset: 6px; }}
   .profile-strip {{ background: #fff; border-bottom: 1px solid var(--line); }}
-  .profile-grid {{ display: grid; grid-template-columns: 132px minmax(0,1fr); gap: 30px; align-items: center; padding-top: 36px; padding-bottom: 36px; }}
-  .profile-strip .profile-photo {{ width: 132px; height: 140px; border-radius: 12px; box-shadow: none; }}
+  .profile-grid {{ padding-top: 28px; padding-bottom: 28px; }}
   .profile-intro p {{ margin-bottom: 15px; max-width: 740px; }}
   .profile-eyebrow {{ color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }}
   .profile-intro .links a {{ font-size: 14px; border-radius: 999px; padding: 5px 12px; }}
@@ -492,9 +485,9 @@ HTML = f"""<!DOCTYPE html>
   h3 {{ font-family: Georgia, "Iowan Old Style", serif; }}
   .lede {{ font: 400 21px/1.55 Georgia, serif; max-width: 900px; }}
   #about p {{ max-width: 880px; }}
-  .about-layout {{ display: grid; grid-template-columns: minmax(0,1fr) 226px; gap: 34px; align-items: start; }}
+  .about-layout {{ display: grid; grid-template-columns: minmax(0,1fr) 140px; gap: 26px; align-items: start; }}
   .about-copy {{ grid-column: 1; grid-row: 1; }}
-  .about-portrait {{ grid-column: 2; grid-row: 1; display: block; width: 226px; height: 282px; object-fit: cover; object-position: 48% 35%; border-radius: 12px; box-shadow: 0 12px 28px rgba(20,34,55,.14); }}
+  .about-portrait {{ grid-column: 2; grid-row: 1; display: block; width: 140px; height: 170px; object-fit: cover; object-position: 48% 35%; border-radius: 10px; box-shadow: 0 8px 20px rgba(20,34,55,.12); }}
   #research .wrap {{ display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 18px; }}
   #research h2 {{ grid-column: 1 / -1; }}
   .theme {{ margin: 0; padding: 24px; border: 1px solid var(--line); border-left: 3px solid #735c9b; border-radius: 9px; background: #fff; box-shadow: 0 6px 20px rgba(20,34,55,.04); }}
@@ -615,12 +608,9 @@ HTML = f"""<!DOCTYPE html>
     .hero .tagline {{ font-size: 17px; }}
     .hero-actions {{ flex-direction: column; }}
     .hero-button {{ width: 100%; }}
-    .profile-grid {{ grid-template-columns: 82px minmax(0,1fr); gap: 18px; align-items: start; }}
-    .profile-strip .profile-photo {{ width: 82px; height: 92px; }}
-    .profile-intro .links {{ grid-column: 1 / -1; }}
     .metrics {{ grid-template-columns: repeat(2,minmax(0,1fr)); }}
     .about-layout {{ grid-template-columns: 1fr; gap: 18px; }}
-    .about-portrait {{ grid-column: 1; grid-row: 1; width: 180px; height: 225px; justify-self: center; }}
+    .about-portrait {{ grid-column: 1; grid-row: 1; width: 128px; height: 156px; justify-self: center; }}
     .about-copy {{ grid-column: 1; grid-row: 2; }}
     #research .wrap, #code .wrap {{ grid-template-columns: 1fr; }}
     .featured-grid, .course-list {{ grid-template-columns: 1fr; }}
@@ -679,7 +669,6 @@ HTML = f"""<!DOCTYPE html>
 </div></header>
 
 <div class="profile-strip"><div class="wrap profile-grid">
-  <img class="profile-photo" src="images/profile.png" alt="Portrait of Rameswar Bhattacharjee">
   <div class="profile-intro">
     <p class="profile-eyebrow">Computational chemist · Georgetown University</p>
     <p>I study how molecular structure, electronic topology, and π-stacking shape the properties of radical and conjugated materials.</p>
@@ -728,7 +717,7 @@ HTML = f"""<!DOCTYPE html>
 <section id="about"><div class="wrap">
   <h2>About</h2>
   <div class="about-layout">
-  <img class="about-portrait" src="images/profile.png" alt="Portrait of Rameswar Bhattacharjee" width="800" height="800" loading="lazy" decoding="async">
+  <img class="about-portrait" src="images/profile.png" alt="Portrait of Rameswar Bhattacharjee" width="140" height="170" loading="lazy" decoding="async">
   <div class="about-copy">
   <p class="lede">I am a computational chemist working on the electronic structure of molecular and polymeric
   materials, with a focus on systems where conventional closed-shell intuition breaks down &mdash; open-shell
