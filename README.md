@@ -1,12 +1,12 @@
 # Academic website — GitHub Pages guide
 
-The site now has three pages: `index.html` (home), `research.html`, and `publications.html`. All three use the same `images/` folder. Keep the `CV_Rameswar_Bhattacharjee.pdf`, `robots.txt`, and `sitemap.xml` files at the repository root.
+The site has five pages: `index.html` (home), `research.html`, `code-data.html`, `publications.html`, and `teaching.html`. They share the same `images/` folder. Keep `CV_Rameswar_Bhattacharjee.pdf`, `robots.txt`, and `sitemap.xml` at the repository root.
 
 ## Update the published site
 
 Upload or replace these files in `rameswariacs/rameswariacs.github.io`, preserving their paths:
 
-- `index.html`, `research.html`, and `publications.html`
+- `index.html`, `research.html`, `code-data.html`, `publications.html`, and `teaching.html`
 - `images/hero-molecular-orbitals.jpg`
 - `images/latest/chemrxiv-preprint-first-page.jpg`
 - `sitemap.xml`
@@ -51,4 +51,4 @@ Edit `build_site.py` and `pubs.json`, then run:
 python3 build_site.py
 ```
 
-The generator writes the three root HTML files and matching copies in `site/`. Upload the changed root files and any new images. See `UPDATING.md` for metrics, publications, teaching, and Latest Work instructions.
+The generator writes the five HTML files at the repository root. Upload the changed files and any new images. See `UPDATING.md` for metrics, publications, teaching, and Latest Work instructions.

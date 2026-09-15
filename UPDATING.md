@@ -4,7 +4,7 @@ Two things go stale: **citation metrics** and **publications**. Both are quick.
 
 For a metrics-only change, you can edit the live homepage on GitHub. For
 research, publication, teaching, or design changes, edit `build_site.py` and
-regenerate the three pages so navigation and shared layout stay in sync.
+regenerate the five pages so navigation and shared layout stay in sync.
 
 ---
 
@@ -45,7 +45,7 @@ CORRESPONDING_AUTHOR = "7"
 ```
 
 Then run `python3 build_site.py` and upload the new `index.html`.
-The generator also refreshes `research.html` and `publications.html`; upload
+The generator also refreshes `research.html`, `code-data.html`, `publications.html`, and `teaching.html`; upload
 them whenever their content changes.
 
 ---
@@ -69,7 +69,7 @@ feeds your CV — so updating it keeps both in sync.
 3. Run both generators:
 
    ```bash
-   python3 build_site.py      # rebuilds all three web pages
+   python3 build_site.py      # rebuilds all five web pages
    node build_cv.js           # rebuilds the R1 CV
    node build_cv_pui.js       # rebuilds the PUI CV
    ```
@@ -85,9 +85,9 @@ If a paper moves from "submitted" to "published", also delete it from the
 
 ## C. Updating teaching courses
 
-Teaching experience appears in the `Teaching & Mentoring` section of
-`build_site.py`. Search for `<section id="teaching">` and update the course
-cards there.
+Teaching experience appears on `teaching.html`. Search for `<section id="teaching">`
+in `build_site.py` and update the course cards there. The separate Mentoring
+section begins at `<section id="mentoring">`.
 
 For each course, keep the following information current:
 
@@ -98,7 +98,11 @@ For each course, keep the following information current:
 
 The current entry for General Chemistry Laboratory is **CHEM 1105, Fall 2026**.
 When the semester or assignment changes, update the `Current course` card and
-then run `python3 build_site.py` before uploading the regenerated `index.html`.
+then run `python3 build_site.py` before uploading the regenerated `teaching.html`.
+
+Code and dataset information appears on `code-data.html`. Search for
+`<section id="code">` in `build_site.py`, update the cards, then regenerate and
+upload `code-data.html`.
 
 ## D. Changing your profile photo
 

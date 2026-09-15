@@ -299,6 +299,12 @@
   .more-journals { margin-top: 30px; }
   .more-journals summary { display: table; margin: 0 auto 22px; padding: 10px 18px; border: 1px solid #c9b7da; border-radius: 999px; background: #f5f0fa; color: #593d72; font-weight: 700; cursor: pointer; }
   .more-journals[open] { padding-bottom: 8px; }
+  .page-preview-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px; }
+  .page-preview { padding: 28px; }
+  .page-preview h3 { margin: 0 0 8px; }
+  .page-preview p { color: var(--muted); }
+  .preview-link { display: inline-block; color: #684985; font-weight: 700; text-decoration: none; }
+  .preview-link:hover { text-decoration: underline; text-underline-offset: 4px; }
   a:focus-visible, button:focus-visible { outline: 3px solid #b69ad8; outline-offset: 3px; }
 
   /* Year-grouped publication rows inside a translucent scientific panel. */
@@ -340,7 +346,7 @@
   .page-publications footer a { color: #f0e8ff; }
 
   /* A restrained hover response for links, cards, and imagery. */
-  .nav-links a, .hero-button, .links a, .latest-actions a, .doi,
+  .nav-links a, .hero-button, .links a, .latest-actions a, .doi, .preview-link,
   .theme, .card, .featured-paper, .pub-row, .featured-figure img,
   .latest-figure img, .journal-cover-card, .more-journals summary {
     transition: transform .24s ease, box-shadow .24s ease,
@@ -348,7 +354,7 @@
   }
   @media (hover: hover) {
     .nav-links a:hover, .hero-button:hover, .links a:hover,
-    .latest-actions a:hover, .doi:hover, .more-journals summary:hover { transform: translateY(-2px); }
+    .latest-actions a:hover, .doi:hover, .preview-link:hover, .more-journals summary:hover { transform: translateY(-2px); }
     .theme:hover, .card:hover, .featured-paper:hover,
     .journal-cover-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(20,30,54,.15); }
     .pub-row:hover { transform: translateX(4px); background: rgba(255,255,255,.09); }
@@ -361,6 +367,7 @@
     .latest-paper { grid-template-columns: 1fr; }
     .latest-figure { border-right: 0; border-bottom: 1px solid var(--line); }
     .journal-cover-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .page-preview-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 680px) {
     .wrap { padding: 0 20px; }
@@ -400,7 +407,7 @@
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .nav-links a, .hero-button, .links a, .latest-actions a, .doi,
+    .nav-links a, .hero-button, .links a, .latest-actions a, .doi, .preview-link,
     .theme, .card, .featured-paper, .pub-row, .featured-figure img,
     .latest-figure img, .journal-cover-card, .more-journals summary { transition: none; }
   }
@@ -414,10 +421,10 @@
   <div class="nav-links" id="site-links">
     <a href="#about">About</a>
     <a href="research.html">Research</a>
-    <a href="research.html#code">Code &amp; Data</a>
+    <a href="code-data.html">Code &amp; Data</a>
     <a href="publications.html">Publications</a>
     <a href="#journal-gallery">Gallery</a>
-    <a href="#teaching">Teaching</a>
+    <a href="teaching.html">Teaching</a>
     <a href="#contact">Contact</a>
   </div>
 </div></nav>
@@ -500,6 +507,8 @@
   named participant on active NSF and DOE research awards.</p>
 </div></section>
 
+<section id="explore-more"><div class="wrap"><h2>Explore more</h2><div class="page-preview-grid"><article class="card page-preview"><h3>Code &amp; Data</h3><p>Open datasets, computational methods, and tools behind my research.</p><a class="preview-link" href="code-data.html">Explore code and data &rarr;</a></article><article class="card page-preview"><h3>Teaching &amp; Mentoring</h3><p>Courses I support, my teaching approach, and student research mentoring.</p><a class="preview-link" href="teaching.html">Explore teaching and mentoring &rarr;</a></article></div></div></section>
+
 <section id="journal-gallery"><div class="wrap"><h2>Journal gallery</h2><p class="gallery-intro">Selected issue covers from journals in which my work has appeared.</p><h3 class="gallery-subtitle">My work on journal covers</h3><p class="gallery-caption">These covers feature papers I coauthored.</p><div class="journal-cover-grid featured-cover-grid"><figure class="journal-cover-card"><img src="images/journals/organic-biomolecular-chemistry.jpg" alt="Organic &amp; Biomolecular Chemistry issue cover" loading="lazy" decoding="async"><figcaption>Organic &amp; Biomolecular Chemistry<span class="cover-feature-note">My article featured on the cover</span></figcaption></figure>
 <figure class="journal-cover-card"><img src="images/journals/journal-of-computational-chemistry.jpg" alt="Journal of Computational Chemistry issue cover" loading="lazy" decoding="async"><figcaption>Journal of Computational Chemistry<span class="cover-feature-note">My article featured on the cover</span></figcaption></figure>
 <figure class="journal-cover-card"><img src="images/journals/precision-chemistry.jpg" alt="Precision Chemistry issue cover" loading="lazy" decoding="async"><figcaption>Precision Chemistry<span class="cover-feature-note">My article featured on the cover</span></figcaption></figure></div><h3 class="gallery-subtitle">Journals where I have published</h3><div class="journal-cover-grid"><figure class="journal-cover-card"><img src="images/journals/jacs.jpg" alt="Journal of the American Chemical Society issue cover" loading="lazy" decoding="async"><figcaption>Journal of the American Chemical Society</figcaption></figure>
@@ -518,45 +527,9 @@
 
 
 
-<section id="teaching"><div class="wrap">
-  <h2>Teaching &amp; Mentoring</h2>
-  <p class="teaching-intro">At Georgetown University, I currently teach General Chemistry Laboratory
-  (CHEM 1105) as a teaching assistant. I lead a weekly recitation and laboratory session and hold office
-  hours for the same group of 24 students.</p>
 
-  <div class="course-list">
-    <article class="card course">
-      <span class="tag">Current course</span>
-      <h3>CHEM 1105 &middot; General Chemistry Laboratory</h3>
-      <p class="course-meta">Teaching Assistant &middot; Fall 2026</p>
-      <p>One hour of recitation, two hours of laboratory, and one hour of office hours each week. I connect
-      experimental observations with molecular explanations, quantitative reasoning, and safe laboratory practice.</p>
-    </article>
-    <article class="card course">
-      <span class="tag">Previous course support</span>
-      <h3>Physical Chemistry I</h3>
-      <p class="course-meta">Teaching Assistant &middot; Fall 2023 and Fall 2024<br>
-      Faculty Assistant &middot; Fall 2025</p>
-      <p>I supported the course across three cohorts through problem solving and assessment, helping students
-      connect thermodynamic and quantum-mechanical models with equations and chemical meaning.</p>
-    </article>
-    <article class="card course">
-      <span class="tag">Previous course support</span>
-      <h3>Computational Chemistry Methods</h3>
-      <p class="course-meta">Teaching Assistant &middot; Spring 2025</p>
-      <p>I helped students treat computation as a scientific argument: choose and justify a method, benchmark
-      calculations, document the workflow, and communicate the limits of a result.</p>
-    </article>
-  </div>
 
-  <h3>Teaching approach and mentoring</h3>
-  <p class="teaching-note">My teaching begins with a chemical question and a qualitative prediction, then moves
-  among molecular pictures, equations, and data before returning to the chemical meaning of the result. I have
-  mentored four undergraduate researchers. One Georgetown undergraduate became a co-author on two papers, and
-  two NSF REU students each completed a self-contained project during a ten-week summer program.</p>
-  <p class="teaching-note">I am prepared to teach general, physical, quantum, and computational chemistry and to
-  develop a project-based course in electronic structure and data-driven chemistry.</p>
-</div></section>
+
 
 <section id="contact"><div class="wrap">
   <h2>Contact</h2>

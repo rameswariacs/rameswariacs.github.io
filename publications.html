@@ -299,6 +299,12 @@
   .more-journals { margin-top: 30px; }
   .more-journals summary { display: table; margin: 0 auto 22px; padding: 10px 18px; border: 1px solid #c9b7da; border-radius: 999px; background: #f5f0fa; color: #593d72; font-weight: 700; cursor: pointer; }
   .more-journals[open] { padding-bottom: 8px; }
+  .page-preview-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px; }
+  .page-preview { padding: 28px; }
+  .page-preview h3 { margin: 0 0 8px; }
+  .page-preview p { color: var(--muted); }
+  .preview-link { display: inline-block; color: #684985; font-weight: 700; text-decoration: none; }
+  .preview-link:hover { text-decoration: underline; text-underline-offset: 4px; }
   a:focus-visible, button:focus-visible { outline: 3px solid #b69ad8; outline-offset: 3px; }
 
   /* Year-grouped publication rows inside a translucent scientific panel. */
@@ -340,7 +346,7 @@
   .page-publications footer a { color: #f0e8ff; }
 
   /* A restrained hover response for links, cards, and imagery. */
-  .nav-links a, .hero-button, .links a, .latest-actions a, .doi,
+  .nav-links a, .hero-button, .links a, .latest-actions a, .doi, .preview-link,
   .theme, .card, .featured-paper, .pub-row, .featured-figure img,
   .latest-figure img, .journal-cover-card, .more-journals summary {
     transition: transform .24s ease, box-shadow .24s ease,
@@ -348,7 +354,7 @@
   }
   @media (hover: hover) {
     .nav-links a:hover, .hero-button:hover, .links a:hover,
-    .latest-actions a:hover, .doi:hover, .more-journals summary:hover { transform: translateY(-2px); }
+    .latest-actions a:hover, .doi:hover, .preview-link:hover, .more-journals summary:hover { transform: translateY(-2px); }
     .theme:hover, .card:hover, .featured-paper:hover,
     .journal-cover-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(20,30,54,.15); }
     .pub-row:hover { transform: translateX(4px); background: rgba(255,255,255,.09); }
@@ -361,6 +367,7 @@
     .latest-paper { grid-template-columns: 1fr; }
     .latest-figure { border-right: 0; border-bottom: 1px solid var(--line); }
     .journal-cover-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .page-preview-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 680px) {
     .wrap { padding: 0 20px; }
@@ -400,7 +407,7 @@
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .nav-links a, .hero-button, .links a, .latest-actions a, .doi,
+    .nav-links a, .hero-button, .links a, .latest-actions a, .doi, .preview-link,
     .theme, .card, .featured-paper, .pub-row, .featured-figure img,
     .latest-figure img, .journal-cover-card, .more-journals summary { transition: none; }
   }
@@ -413,10 +420,10 @@
   <div class="nav-links" id="site-links">
     <a href="index.html#about">About</a>
     <a href="research.html">Research</a>
-    <a href="research.html#code">Code &amp; Data</a>
+    <a href="code-data.html">Code &amp; Data</a>
     <a href="publications.html" aria-current="page">Publications</a>
     <a href="index.html#journal-gallery">Gallery</a>
-    <a href="index.html#teaching">Teaching</a>
+    <a href="teaching.html">Teaching</a>
     <a href="index.html#contact">Contact</a>
   </div>
 </div></nav>

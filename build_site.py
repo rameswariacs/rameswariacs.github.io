@@ -209,6 +209,23 @@ if featured_covers or main_covers or more_covers:
         '</div></section>'
     )
 
+secondary_preview_html = (
+    '<section id="explore-more"><div class="wrap">'
+    '<h2>Explore more</h2>'
+    '<div class="page-preview-grid">'
+    '<article class="card page-preview">'
+    '<h3>Code &amp; Data</h3>'
+    '<p>Open datasets, computational methods, and tools behind my research.</p>'
+    '<a class="preview-link" href="code-data.html">Explore code and data &rarr;</a>'
+    '</article>'
+    '<article class="card page-preview">'
+    '<h3>Teaching &amp; Mentoring</h3>'
+    '<p>Courses I support, my teaching approach, and student research mentoring.</p>'
+    '<a class="preview-link" href="teaching.html">Explore teaching and mentoring &rarr;</a>'
+    '</article>'
+    '</div></div></section>'
+)
+
 HTML = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -510,6 +527,12 @@ HTML = f"""<!DOCTYPE html>
   .more-journals {{ margin-top: 30px; }}
   .more-journals summary {{ display: table; margin: 0 auto 22px; padding: 10px 18px; border: 1px solid #c9b7da; border-radius: 999px; background: #f5f0fa; color: #593d72; font-weight: 700; cursor: pointer; }}
   .more-journals[open] {{ padding-bottom: 8px; }}
+  .page-preview-grid {{ display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px; }}
+  .page-preview {{ padding: 28px; }}
+  .page-preview h3 {{ margin: 0 0 8px; }}
+  .page-preview p {{ color: var(--muted); }}
+  .preview-link {{ display: inline-block; color: #684985; font-weight: 700; text-decoration: none; }}
+  .preview-link:hover {{ text-decoration: underline; text-underline-offset: 4px; }}
   a:focus-visible, button:focus-visible {{ outline: 3px solid #b69ad8; outline-offset: 3px; }}
 
   /* Year-grouped publication rows inside a translucent scientific panel. */
@@ -551,7 +574,7 @@ HTML = f"""<!DOCTYPE html>
   .page-publications footer a {{ color: #f0e8ff; }}
 
   /* A restrained hover response for links, cards, and imagery. */
-  .nav-links a, .hero-button, .links a, .latest-actions a, .doi,
+  .nav-links a, .hero-button, .links a, .latest-actions a, .doi, .preview-link,
   .theme, .card, .featured-paper, .pub-row, .featured-figure img,
   .latest-figure img, .journal-cover-card, .more-journals summary {{
     transition: transform .24s ease, box-shadow .24s ease,
@@ -559,7 +582,7 @@ HTML = f"""<!DOCTYPE html>
   }}
   @media (hover: hover) {{
     .nav-links a:hover, .hero-button:hover, .links a:hover,
-    .latest-actions a:hover, .doi:hover, .more-journals summary:hover {{ transform: translateY(-2px); }}
+    .latest-actions a:hover, .doi:hover, .preview-link:hover, .more-journals summary:hover {{ transform: translateY(-2px); }}
     .theme:hover, .card:hover, .featured-paper:hover,
     .journal-cover-card:hover {{ transform: translateY(-4px); box-shadow: 0 14px 32px rgba(20,30,54,.15); }}
     .pub-row:hover {{ transform: translateX(4px); background: rgba(255,255,255,.09); }}
@@ -572,6 +595,7 @@ HTML = f"""<!DOCTYPE html>
     .latest-paper {{ grid-template-columns: 1fr; }}
     .latest-figure {{ border-right: 0; border-bottom: 1px solid var(--line); }}
     .journal-cover-grid {{ grid-template-columns: repeat(2, minmax(0,1fr)); }}
+    .page-preview-grid {{ grid-template-columns: 1fr; }}
   }}
   @media (max-width: 680px) {{
     .wrap {{ padding: 0 20px; }}
@@ -611,7 +635,7 @@ HTML = f"""<!DOCTYPE html>
   }}
   @media (prefers-reduced-motion: reduce) {{
     html {{ scroll-behavior: auto; }}
-    .nav-links a, .hero-button, .links a, .latest-actions a, .doi,
+    .nav-links a, .hero-button, .links a, .latest-actions a, .doi, .preview-link,
     .theme, .card, .featured-paper, .pub-row, .featured-figure img,
     .latest-figure img, .journal-cover-card, .more-journals summary {{ transition: none; }}
   }}
@@ -625,10 +649,10 @@ HTML = f"""<!DOCTYPE html>
   <div class="nav-links" id="site-links">
     <a href="#about">About</a>
     <a href="research.html">Research</a>
-    <a href="research.html#code">Code &amp; Data</a>
+    <a href="code-data.html">Code &amp; Data</a>
     <a href="publications.html">Publications</a>
     {gallery_nav}
-    <a href="#teaching">Teaching</a>
+    <a href="teaching.html">Teaching</a>
     <a href="#contact">Contact</a>
   </div>
 </div></nav>
@@ -710,6 +734,8 @@ HTML = f"""<!DOCTYPE html>
   positions at the University of Delaware, the University of South Dakota, and Georgetown University. I am a
   named participant on active NSF and DOE research awards.</p>
 </div></section>
+
+{secondary_preview_html}
 
 {gallery_html}
 
@@ -828,7 +854,7 @@ HTML = f"""<!DOCTYPE html>
 </div></section>
 
 <section id="teaching"><div class="wrap">
-  <h2>Teaching &amp; Mentoring</h2>
+  <h2>Teaching</h2>
   <p class="teaching-intro">At Georgetown University, I currently teach General Chemistry Laboratory
   (CHEM 1105) as a teaching assistant. I lead a weekly recitation and laboratory session and hold office
   hours for the same group of 24 students.</p>
@@ -858,13 +884,18 @@ HTML = f"""<!DOCTYPE html>
     </article>
   </div>
 
-  <h3>Teaching approach and mentoring</h3>
+  <h3>Teaching approach</h3>
   <p class="teaching-note">My teaching begins with a chemical question and a qualitative prediction, then moves
-  among molecular pictures, equations, and data before returning to the chemical meaning of the result. I have
-  mentored four undergraduate researchers. One Georgetown undergraduate became a co-author on two papers, and
-  two NSF REU students each completed a self-contained project during a ten-week summer program.</p>
+  among molecular pictures, equations, and data before returning to the chemical meaning of the result.</p>
   <p class="teaching-note">I am prepared to teach general, physical, quantum, and computational chemistry and to
   develop a project-based course in electronic structure and data-driven chemistry.</p>
+</div></section>
+
+<section id="mentoring"><div class="wrap">
+  <h2>Mentoring</h2>
+  <p class="teaching-note">I have mentored four undergraduate researchers. One Georgetown undergraduate became
+  a co-author on two papers, and two NSF REU students each completed a self-contained project during a ten-week
+  summer program.</p>
 </div></section>
 
 <section id="contact"><div class="wrap">
@@ -904,7 +935,7 @@ def section_markup(source, section_id):
 def page_metadata(source, page, title, description):
     result = source.replace(
         '<title>Rameswar Bhattacharjee — Computational Chemistry</title>',
-        f'<title>{title} — Rameswar Bhattacharjee</title>', 1
+        f'<title>{html.escape(title)} — Rameswar Bhattacharjee</title>', 1
     )
     result = re.sub(
         r'<meta name="description" content="[^"]+">',
@@ -921,7 +952,7 @@ def page_metadata(source, page, title, description):
     )
     result = result.replace(
         '<meta property="og:title" content="Rameswar Bhattacharjee — Computational Chemistry">',
-        f'<meta property="og:title" content="{title} — Rameswar Bhattacharjee">', 1
+        f'<meta property="og:title" content="{html.escape(title, quote=True)} — Rameswar Bhattacharjee">', 1
     )
     result = re.sub(
         r'<meta property="og:description" content="[^"]+">',
@@ -939,9 +970,8 @@ footer_markup = HTML[HTML.index('<footer>'):]
 def interior_nav(current):
     links = nav_markup.replace('href="#about"', 'href="index.html#about"')
     links = links.replace('href="#journal-gallery"', 'href="index.html#journal-gallery"')
-    links = links.replace('href="#teaching"', 'href="index.html#teaching"')
     links = links.replace('href="#contact"', 'href="index.html#contact"')
-    active = 'research.html' if current == 'research' else 'publications.html'
+    active = f'{current}.html'
     return links.replace(f'<a href="{active}">', f'<a href="{active}" aria-current="page">', 1)
 
 def interior_page(filename, title, subtitle, content):
@@ -963,25 +993,34 @@ def interior_page(filename, title, subtitle, content):
 research_page = interior_page(
     'research.html', 'Research',
     'Electronic structure, radical π-stacking, conjugated materials, and machine learning.',
-    section_markup(HTML, 'research') + '\n' + section_markup(HTML, 'code')
+    section_markup(HTML, 'research')
+)
+code_page = interior_page(
+    'code-data.html', 'Code & Data',
+    'Open datasets and the computational methods behind my research.',
+    section_markup(HTML, 'code')
 )
 publications_page = interior_page(
     'publications.html', 'Publications',
     f'Latest work, selected articles, and the complete list of {len(pubs)} peer-reviewed publications.',
     section_markup(HTML, 'latest-work') + '\n' + section_markup(HTML, 'publications')
 )
+teaching_page = interior_page(
+    'teaching.html', 'Teaching & Mentoring',
+    'Course support, teaching approach, and undergraduate research mentoring.',
+    section_markup(HTML, 'teaching') + '\n' + section_markup(HTML, 'mentoring')
+)
 
 home = HTML
-for section_id in ('research', 'code', 'publications'):
+for section_id in ('research', 'code', 'publications', 'teaching', 'mentoring'):
     home = home.replace(section_markup(HTML, section_id), '', 1)
 
-out = pathlib.Path('site')
-out.mkdir(exist_ok=True)
 for name, content in (
     ('index.html', home),
     ('research.html', research_page),
+    ('code-data.html', code_page),
     ('publications.html', publications_page),
+    ('teaching.html', teaching_page),
 ):
-    (out / name).write_text(content, encoding='utf-8')
     pathlib.Path(name).write_text(content, encoding='utf-8')
-print(f'wrote three pages — {len(pubs)} publications')
+print(f'wrote five pages — {len(pubs)} publications')
