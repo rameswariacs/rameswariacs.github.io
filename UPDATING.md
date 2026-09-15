@@ -2,8 +2,9 @@
 
 Two things go stale: **citation metrics** and **publications**. Both are quick.
 
-There are two ways to do everything below — edit the live file on GitHub, or
-regenerate from the script. Use whichever you prefer; they produce the same result.
+For a metrics-only change, you can edit the live homepage on GitHub. For
+research, publication, teaching, or design changes, edit `build_site.py` and
+regenerate the three pages so navigation and shared layout stay in sync.
 
 ---
 
@@ -50,6 +51,8 @@ METRICS_AS_OF = "August 2026"
 ```
 
 Then run `python3 build_site.py` and upload the new `index.html`.
+The generator also refreshes `research.html` and `publications.html`; upload
+them whenever their content changes.
 
 ---
 
@@ -72,16 +75,16 @@ feeds your CV — so updating it keeps both in sync.
 3. Run both generators:
 
    ```bash
-   python3 build_site.py      # rebuilds index.html
+   python3 build_site.py      # rebuilds all three web pages
    node build_cv.js           # rebuilds the R1 CV
    node build_cv_pui.js       # rebuilds the PUI CV
    ```
 
 4. Update the publication count in the metrics (see section A)
-5. Upload the new `index.html`
+5. Upload the new `index.html` and `publications.html`
 
 If a paper moves from "submitted" to "published", also delete it from the
-**Under review & in preparation** section — search `index.html` for
+**Under review & in preparation** section — search `build_site.py` for
 `Under review` to find it.
 
 ---
@@ -101,7 +104,7 @@ For each course, keep the following information current:
 
 The current entry for General Chemistry Laboratory is **CHEM 1105, Fall 2026**.
 When the semester or assignment changes, update the `Current course` card and
-then run `python3 build_site.py` before uploading the regenerated page.
+then run `python3 build_site.py` before uploading the regenerated `index.html`.
 
 ## D. Changing your profile photo
 
@@ -114,7 +117,20 @@ The homepage photo is stored as `images/profile.png`. To replace it later:
 A square or nearly square photograph works best. The page crops it automatically
 on desktop and mobile screens.
 
-## E. Updating featured publications and images
+## E. Updating the latest work and featured publications
+
+The large **Latest work** card is maintained separately from the six
+**Featured publications** cards. In `build_site.py`, search for
+`id="latest-publication"` to update it when a newer paper appears.
+
+Update the status and year, title, authors, short description, links, and image
+path together. The current image is the first page of the ChemRxiv PDF at
+`images/latest/chemrxiv-preprint-first-page.jpg`. When replacing it, regenerate
+and upload both `index.html` and `publications.html` along with the new image.
+This card is intentionally reserved
+for the newest work that best represents your independent computational or
+machine-learning research; it may be a preprint while under review. Featured
+papers can remain selected examples of your strongest published work.
 
 The six visual cards at the top of the Publications section are maintained in
 `build_site.py`. Search for `featured-grid` to find them.
@@ -129,11 +145,20 @@ For each featured paper, update these four items together:
 Place the image file in `images/featured/` and use a short, web-safe filename.
 Whenever possible, use the paper's official TOC graphic or an original figure
 that you are permitted to display. Then run `python3 build_site.py` and upload
-both the regenerated `index.html` and the new image file or folder.
+the regenerated `publications.html` and the new image file or folder.
 
-The machine-learning paper is currently listed as **under revision**, not as a
-published or featured article. When its status changes, update both the research
-theme bullet and the `Under review & in preparation` entry in `build_site.py`.
+The machine-learning paper is currently a **ChemRxiv preprint under revision**,
+not a peer-reviewed publication. When its status changes, update the Latest work
+card, the research-theme bullet, and the `Under review & in preparation` entry
+in `build_site.py`.
+
+## Journal gallery
+
+The home gallery uses issue covers from journals in which your work has
+appeared. Add the images to `images/journals/` using the filenames listed in
+`README.md`, then run `python3 build_site.py`. Available covers appear in the
+gallery; missing covers are skipped. The covers are journal examples rather than claims
+that your articles were selected as cover features.
 
 ## F. Restoring the GitHub link
 

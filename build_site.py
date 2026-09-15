@@ -48,9 +48,41 @@ def render_pub(text):
         out += f'<a class="doi" href="https://doi.org/{html.escape(doi)}" target="_blank" rel="noopener">{html.escape(doi)}</a>'
     return out
 
+PUB_THUMBS = {
+    '10.1021/jacs.4c10064': 'images/featured/jacs-topological.jpg',
+    '10.1021/jacs.3c14065': 'images/featured/jacs-perylene.jpg',
+    '10.1039/d5sc00639b': 'images/featured/quinonoid-radial.jpeg',
+    '10.1021/acsmaterialsau.4c00153': 'images/featured/acene-dimers.jpg',
+    '10.1039/d4sc03774j': 'images/featured/triphenylene.png',
+    '10.1021/acs.chemmater.3c02547': 'images/featured/chemmat-topological.jpg',
+}
+
+year_rows = {}
+for i, pub in enumerate(pubs):
+    num = len(pubs) - i
+    year_match = re.search(r'\b(?:19|20)\d{2}\b', pub)
+    year = year_match.group() if year_match else 'Earlier work'
+    doi_match = DOI_RE.search(pub)
+    doi = doi_match.group(1).rstrip('.').lower() if doi_match else ''
+    thumb = PUB_THUMBS.get(doi)
+    visual = (
+        f'<img src="{thumb}" alt="" loading="lazy" decoding="async">'
+        if thumb else f'<span aria-hidden="true">#{num}</span>'
+    )
+    row = (
+        '<li class="pub pub-row">'
+        f'<div class="pub-thumbnail">{visual}</div>'
+        f'<div class="pub-details"><span class="pubnum">#{num}</span>{render_pub(pub)}</div>'
+        '</li>'
+    )
+    year_rows.setdefault(year, []).append(row)
+
 pub_items = '\n'.join(
-    f'      <li class="pub"><span class="pubnum">{len(pubs)-i}</span><div>{render_pub(p)}</div></li>'
-    for i, p in enumerate(pubs)
+    '<div class="pub-year-group">'
+    f'<h3 class="pub-year"><span>{year}</span></h3>'
+    '<ol class="pubs">' + '\n'.join(rows) + '</ol>'
+    '</div>'
+    for year, rows in year_rows.items()
 )
 
 THEMES = [
@@ -109,6 +141,38 @@ github_link = (
     f'<!-- Restore once you have pushed a repository: '
     f'<a href="https://github.com/{GITHUB_USER}" target="_blank" rel="noopener">GitHub</a> -->'
 )
+
+JOURNAL_COVERS = [
+    ('Journal of the American Chemical Society', 'jacs.jpg'),
+    ('Angewandte Chemie', 'angewandte-chemie.jpg'),
+    ('Chemical Science', 'chemical-science.jpg'),
+    ('Chemistry of Materials', 'chemistry-of-materials.jpg'),
+    ('ACS Materials Au', 'acs-materials-au.jpg'),
+    ('ACS Physical Chemistry Au', 'acs-physical-chemistry-au.jpg'),
+]
+cover_dir = pathlib.Path('images/journals')
+available_covers = [
+    (name, filename) for name, filename in JOURNAL_COVERS
+    if (cover_dir / filename).is_file()
+]
+gallery_html = ''
+gallery_nav = ''
+if available_covers:
+    gallery_nav = '<a href="#journal-gallery">Gallery</a>'
+    cards = '\n'.join(
+        '<figure class="journal-cover-card">'
+        f'<img src="images/journals/{filename}" alt="{html.escape(name)} issue cover" loading="lazy" decoding="async">'
+        f'<figcaption>{html.escape(name)}</figcaption>'
+        '</figure>'
+        for name, filename in available_covers
+    )
+    gallery_html = (
+        '<section id="journal-gallery"><div class="wrap">'
+        '<h2>Journal gallery</h2>'
+        '<p class="gallery-intro">Issue covers from journals in which my work has appeared.</p>'
+        f'<div class="journal-cover-grid">{cards}</div>'
+        '</div></section>'
+    )
 
 HTML = f"""<!DOCTYPE html>
 <html lang="en">
@@ -399,13 +463,73 @@ HTML = f"""<!DOCTYPE html>
   .course-list .card {{ padding: 23px; }}
   .course-meta {{ font-size: 14px; }}
   .teaching-intro {{ max-width: 900px; }}
+  .gallery-intro {{ color: var(--muted); font-size: 16px; margin-top: -12px; margin-bottom: 24px; }}
+  .journal-cover-grid {{ display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; }}
+  .journal-cover-card {{ margin: 0; padding: 18px 18px 15px; border: 1px solid var(--line); border-radius: 12px; background: #fff; box-shadow: 0 6px 18px rgba(20,34,55,.06); text-align: center; }}
+  .journal-cover-card img {{ display: block; width: 100%; height: 350px; object-fit: contain; background: #fff; }}
+  .journal-cover-card figcaption {{ padding-top: 13px; color: var(--ink); font-size: 14px; font-weight: 700; }}
   a:focus-visible, button:focus-visible {{ outline: 3px solid #b69ad8; outline-offset: 3px; }}
+
+  /* Year-grouped publication rows inside a translucent scientific panel. */
+  .page-publications {{
+    color: #f4f1f8;
+    background: linear-gradient(rgba(6,11,24,.78), rgba(6,11,24,.85)),
+      url("images/hero-molecular-orbitals.jpg") center center / cover fixed;
+  }}
+  .page-publications .page-banner {{ min-height: 290px; padding-bottom: 35px; background: transparent; }}
+  .publication-shell {{
+    width: min(calc(100% - 48px), 1120px); margin: 0 auto 70px;
+    background: rgba(24, 31, 49, .7); border: 1px solid rgba(255,255,255,.22);
+    border-radius: 18px; box-shadow: 0 20px 70px rgba(0,0,0,.24);
+    backdrop-filter: blur(19px);
+  }}
+  .page-publications .publication-shell section {{ background: transparent; border-color: rgba(255,255,255,.17); padding: 50px 0; }}
+  .page-publications .publication-shell .wrap {{ max-width: 1040px; }}
+  .page-publications .publication-shell h2,
+  .page-publications .publication-shell > section h3:not(.latest-title):not(.featured-title) {{ color: #fff; }}
+  .page-publications .publication-shell > section > .wrap > p {{ color: #d6d8e2 !important; }}
+  .page-publications .latest-paper, .page-publications .featured-paper {{ color: var(--ink); }}
+  .page-publications .latest-title, .page-publications .featured-title {{ color: var(--ink); }}
+  .page-publications .latest-summary, .page-publications .featured-summary,
+  .page-publications .latest-authors {{ color: var(--muted); }}
+  .page-publications .featured-paper {{ box-shadow: 0 10px 26px rgba(0,0,0,.18); }}
+  .pub-year-group {{ margin-top: 38px; }}
+  .pub-year {{ text-align: center; margin: 0 0 24px; font: 600 22px/1.2 Georgia, serif; }}
+  .pub-year span {{ display: inline-block; border-bottom: 2px solid #b6aacd; padding: 0 0 8px; }}
+  .pub-row {{ display: grid; grid-template-columns: 102px minmax(0,1fr); gap: 22px; align-items: center; padding: 14px 16px; margin-bottom: 7px; border: 1px solid rgba(255,255,255,.13); border-radius: 9px; background: rgba(255,255,255,.045); }}
+  .pub-row:last-child {{ border-bottom: 1px solid rgba(255,255,255,.13); }}
+  .pub-thumbnail {{ width: 102px; height: 80px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 7px; background: rgba(255,255,255,.11); }}
+  .pub-thumbnail img {{ width: 100%; height: 100%; object-fit: cover; background: #fff; }}
+  .pub-thumbnail span {{ color: #d9d1e8; font: 600 26px Georgia, serif; }}
+  .pub-row .pubnum {{ display: block; padding: 0; margin: 0 0 4px; text-align: left; color: #c8bce0; font-size: 13px; font-weight: 700; }}
+  .pub-row .pub-text {{ color: #f4f1f8; font-size: 15px; line-height: 1.5; }}
+  .pub-row .me {{ color: #dfd1f5; }}
+  .pub-row .doi {{ display: inline-flex; margin-top: 9px; padding: 5px 9px; color: #ece7f7; border: 1px solid rgba(255,255,255,.19); border-radius: 5px; background: rgba(255,255,255,.07); font: 500 12px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }}
+  .page-publications footer {{ color: #d8d5df; }}
+  .page-publications footer a {{ color: #f0e8ff; }}
+
+  /* A restrained hover response for links, cards, and imagery. */
+  .nav-links a, .hero-button, .links a, .latest-actions a, .doi,
+  .theme, .card, .featured-paper, .pub-row, .featured-figure img,
+  .latest-figure img, .journal-cover-card {{
+    transition: transform .24s ease, box-shadow .24s ease,
+      background-color .24s ease, border-color .24s ease, color .24s ease;
+  }}
+  @media (hover: hover) {{
+    .nav-links a:hover, .hero-button:hover, .links a:hover,
+    .latest-actions a:hover, .doi:hover {{ transform: translateY(-2px); }}
+    .theme:hover, .card:hover, .featured-paper:hover,
+    .journal-cover-card:hover {{ transform: translateY(-4px); box-shadow: 0 14px 32px rgba(20,30,54,.15); }}
+    .pub-row:hover {{ transform: translateX(4px); background: rgba(255,255,255,.09); }}
+    .featured-figure:hover img, .latest-figure:hover img {{ transform: scale(1.025); }}
+  }}
   @media (max-width: 900px) {{
     .brand span:last-child {{ display: none; }}
     .nav-links {{ gap: 13px; }}
     .featured-grid, .course-list {{ grid-template-columns: repeat(2, minmax(0,1fr)); }}
     .latest-paper {{ grid-template-columns: 1fr; }}
     .latest-figure {{ border-right: 0; border-bottom: 1px solid var(--line); }}
+    .journal-cover-grid {{ grid-template-columns: repeat(2, minmax(0,1fr)); }}
   }}
   @media (max-width: 680px) {{
     .wrap {{ padding: 0 20px; }}
@@ -432,8 +556,23 @@ HTML = f"""<!DOCTYPE html>
     .latest-title {{ font-size: 22px; }}
     section {{ padding: 53px 0; }}
     .page-banner {{ min-height: 280px; padding: 100px 0 42px; }}
+    .publication-shell {{ width: calc(100% - 22px); border-radius: 12px; }}
+    .page-publications .publication-shell section {{ padding: 38px 0; }}
+    .pub-row {{ grid-template-columns: 64px minmax(0,1fr); gap: 13px; padding: 11px; }}
+    .pub-thumbnail {{ width: 64px; height: 64px; }}
+    .pub-thumbnail span {{ font-size: 18px; }}
+    .pub-row .pub-text {{ font-size: 14px; }}
+    .journal-cover-grid {{ grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }}
+    .journal-cover-card {{ padding: 10px 10px 12px; }}
+    .journal-cover-card img {{ height: 230px; }}
+    .journal-cover-card figcaption {{ font-size: 12px; }}
   }}
-  @media (prefers-reduced-motion: reduce) {{ html {{ scroll-behavior: auto; }} }}
+  @media (prefers-reduced-motion: reduce) {{
+    html {{ scroll-behavior: auto; }}
+    .nav-links a, .hero-button, .links a, .latest-actions a, .doi,
+    .theme, .card, .featured-paper, .pub-row, .featured-figure img,
+    .latest-figure img, .journal-cover-card {{ transition: none; }}
+  }}
 </style>
 </head>
 <body id="top">
@@ -446,6 +585,7 @@ HTML = f"""<!DOCTYPE html>
     <a href="research.html">Research</a>
     <a href="research.html#code">Code &amp; Data</a>
     <a href="publications.html">Publications</a>
+    {gallery_nav}
     <a href="#teaching">Teaching</a>
     <a href="#contact">Contact</a>
   </div>
@@ -528,6 +668,8 @@ HTML = f"""<!DOCTYPE html>
   positions at the University of Delaware, the University of South Dakota, and Georgetown University. I am a
   named participant on active NSF and DOE research awards.</p>
 </div></section>
+
+{gallery_html}
 
 <section id="research"><div class="wrap">
   <h2>Research</h2>
@@ -640,9 +782,7 @@ HTML = f"""<!DOCTYPE html>
   </ol>
 
   <h3 style="font-size:16px;margin:30px 0 6px">Peer-reviewed</h3>
-  <ol class="pubs">
 {pub_items}
-  </ol>
 </div></section>
 
 <section id="teaching"><div class="wrap">
@@ -756,6 +896,7 @@ footer_markup = HTML[HTML.index('<footer>'):]
 
 def interior_nav(current):
     links = nav_markup.replace('href="#about"', 'href="index.html#about"')
+    links = links.replace('href="#journal-gallery"', 'href="index.html#journal-gallery"')
     links = links.replace('href="#teaching"', 'href="index.html#teaching"')
     links = links.replace('href="#contact"', 'href="index.html#contact"')
     active = 'research.html' if current == 'research' else 'publications.html'
@@ -770,7 +911,12 @@ def interior_page(filename, title, subtitle, content):
         '</div></header>'
     )
     current = filename.removesuffix('.html')
-    return page_head + '<body id="top">\n' + interior_nav(current) + '\n' + banner + '\n' + content + '\n' + footer_markup
+    if current == 'publications':
+        content = '<main class="publication-shell">' + content + '</main>'
+    return (
+        page_head + f'<body id="top" class="page-{current}">\n'
+        + interior_nav(current) + '\n' + banner + '\n' + content + '\n' + footer_markup
+    )
 
 research_page = interior_page(
     'research.html', 'Research',
